@@ -48,19 +48,6 @@ export class SignIn {
     )
   }
 
-  signup($event){
-    $event.preventDefault();
-    let credentials = this.credentials.value;
-    this.http.post(this.SIGNUP_URL, JSON.stringify(credentials), {
-      headers: this.contentHeader
-    })
-    .map(res => res.json())
-    .subscribe(
-      data => this.authSuccess(data.id_token),
-      err => { this.error = err._body }
-    )
-  }
-
   logout(){
     this.user = null;
     this.local.remove('id_token');
