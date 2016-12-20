@@ -1,13 +1,12 @@
 <ion-header>
   <img src="../../assets/img/beernc-type.svg" alt="Beer NC Logo" />
-</ion-header>
-
+</ion-header> 
 <ion-content padding>
   <div *ngIf="nearbyBreweries">
     <h2>Nearby Locations</h2>
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let nearbyBrewery of nearbyBreweries" width-33>
+        <ion-col *ngFor="let nearbyBrewery of nearbyBreweries" (click)="goToBrewery(nearbyBrewery.id)" width-33>
           <img src="{{nearbyBrewery.img}}" />
           <h3>{{nearbyBrewery.name}}</h3>
           <span>{{ getDistanceFromCurrent( nearbyBrewery.coords ) }} miles away</span>

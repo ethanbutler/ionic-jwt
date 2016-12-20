@@ -4,35 +4,41 @@ import { App } from './app.component';
 import { Storage } from '@ionic/storage';
 
 //pages
-import { Home }   from '../pages/home/home';
-import { Guides } from '../pages/guides/guides';
-import { Nearby } from '../pages/nearby/nearby';
-import { SignIn}  from '../pages/signin/signin';
-import { SignUp } from '../pages/signup/signup';
-import { Splash } from '../pages/splash/splash';
+import { Home }     from '../pages/home/home';
+import { Brewery }  from '../pages/brewery/brewery';
+import { Guides }   from '../pages/guides/guides';
+import { Nearby }   from '../pages/nearby/nearby';
+import { SignIn }   from '../pages/signin/signin';
+import { SignUp }   from '../pages/signup/signup';
+import { Splash }   from '../pages/splash/splash';
+import { Tabs }     from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
     App,
+    Brewery,
     Home,
     Guides,
     Nearby,
     SignIn,
     SignUp,
-    Splash
+    Splash,
+    Tabs
   ],
   imports: [
-    IonicModule.forRoot(App)
+    IonicModule.forRoot(App, {tabsPlacment: 'bottom'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     App,
+    Brewery,
     Home,
     Guides,
     Nearby,
     SignIn,
     SignUp,
-    Splash
+    Splash,
+    Tabs
   ],
   providers: [{
     provide: ErrorHandler,

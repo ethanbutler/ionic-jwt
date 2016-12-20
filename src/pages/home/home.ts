@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
-import * as Geodist from 'geodist';
 
 //pages
-import Guides from '../guides/guides';
-import Nearby from '../nearby/nearby';
+import { Brewery } from '../brewery/brewery';
+import { Guides  } from '../guides/guides';
+import { Nearby }  from '../nearby/nearby';
+
+//vendor
+import * as Geodist from 'geodist';
 
 @Component({
   selector: 'page-home',
@@ -51,6 +54,10 @@ export class Home {
 
   getDistanceFromCurrent(coords){
     return Geodist(coords, this.currentPos, {exact: true}).toFixed(1);
+  }
+
+  goToBrewery(id){
+    this.navCtrl.push(Brewery, { id: id });
   }
 
   goToNearby($event){
