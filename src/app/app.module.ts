@@ -3,7 +3,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Storage } from '@ionic/storage';
 import { Login } from '../pages/login/login';
-import { AuthService } from '../providers/auth';
 
 @NgModule({
   declarations: [
@@ -21,6 +20,6 @@ import { AuthService } from '../providers/auth';
   providers: [{
     provide: ErrorHandler,
     useClass: IonicErrorHandler,
-  }, Storage, AuthService]
+  }, Storage ]
 })
 export class AppModule {}
