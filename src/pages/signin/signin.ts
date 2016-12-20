@@ -7,10 +7,10 @@ import { JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+  selector: 'page-signin',
+  templateUrl: 'signin.html'
 })
-export class Login {
+export class SignIn {
 
   LOGIN_URL: string = 'http://localhost:3001/sessions/create';
   SIGNUP_URL: string = 'http://localhost:3001/users';

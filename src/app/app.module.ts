@@ -1,21 +1,32 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import { App } from './app.component';
 import { Storage } from '@ionic/storage';
-import { Login } from '../pages/login/login';
+
+//pages
+import { Home }   from '../pages/home/home';
+import { SignIn}  from '../pages/signin/signin';
+import { SignUp } from '../pages/signup/signup';
+import { Splash } from '../pages/splash/splash';
 
 @NgModule({
   declarations: [
-    MyApp,
-    Login
+    App,
+    Home,
+    SignIn,
+    SignUp,
+    Splash
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(App)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    Login
+    App,
+    Home,
+    SignIn,
+    SignUp,
+    Splash
   ],
   providers: [{
     provide: ErrorHandler,
