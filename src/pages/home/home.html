@@ -1,17 +1,33 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+  <img src="../../assets/img/beernc-type.svg" alt="Beer NC Logo" />
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div *ngIf="nearbyBreweries">
+    <h2>Nearby Locations</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let nearbyBrewery of nearbyBreweries" width-33>
+          <img src="{{nearbyBrewery.img}}" />
+          <h3>{{nearbyBrewery.name}}</h3>
+          <span>{{ getDistanceFromCurrent( nearbyBrewery.coords ) }} miles away</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button (click)="goToNearby($event)">See More</button>
+  </div>
+  <div *ngIf="guides">
+    <h2>Brewery Guides</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let guide of guides" width-33>
+          <img src="{{guide.img}}" />
+          <h3>{{guide.name}}</h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button (click)="goToGuides($event)">Browse All Guides</button>
+  </div>
+  <h2>Recently Added</h2>
+  <h2>Top Rated NC Breweries</h2>
 </ion-content>

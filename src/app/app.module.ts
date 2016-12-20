@@ -5,6 +5,8 @@ import { Storage } from '@ionic/storage';
 
 //pages
 import { Home }   from '../pages/home/home';
+import { Guides } from '../pages/guides/guides';
+import { Nearby } from '../pages/nearby/nearby';
 import { SignIn}  from '../pages/signin/signin';
 import { SignUp } from '../pages/signup/signup';
 import { Splash } from '../pages/splash/splash';
@@ -13,6 +15,8 @@ import { Splash } from '../pages/splash/splash';
   declarations: [
     App,
     Home,
+    Guides,
+    Nearby,
     SignIn,
     SignUp,
     Splash
@@ -24,6 +28,8 @@ import { Splash } from '../pages/splash/splash';
   entryComponents: [
     App,
     Home,
+    Guides,
+    Nearby,
     SignIn,
     SignUp,
     Splash
