@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+//pages
+import { Rating } from '../rating/rating';
+import { Hours }  from '../hours/hours';
+
 @Component({
   selector: 'page-brewery',
   templateUrl: 'brewery.html'
@@ -42,6 +46,10 @@ export class Brewery {
 
   getTodaysHours(){
     return 'Today\'s Hours';
+  }
+
+  openRating(){
+    this.navCtrl.push()
   }
 
 }
