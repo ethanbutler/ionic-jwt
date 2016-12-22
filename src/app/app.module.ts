@@ -12,6 +12,7 @@ import { SignIn }   from '../pages/signin/signin';
 import { SignUp }   from '../pages/signup/signup';
 import { Splash }   from '../pages/splash/splash';
 import { Tabs }     from '../pages/tabs/tabs';
+import { GopcAd }   from '../components/gopc-ad/gopc-ad';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { Tabs }     from '../pages/tabs/tabs';
     SignIn,
     SignUp,
     Splash,
-    Tabs
+    Tabs,
+    GopcAd
   ],
   imports: [
     IonicModule.forRoot(App, {tabsPlacment: 'bottom'})
@@ -38,7 +40,8 @@ import { Tabs }     from '../pages/tabs/tabs';
     SignIn,
     SignUp,
     Splash,
-    Tabs
+    Tabs,
+    GopcAd
   ],
   providers: [{
     provide: ErrorHandler,

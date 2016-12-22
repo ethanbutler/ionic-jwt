@@ -1,32 +1,41 @@
 <ion-header>
-  <img src="../../assets/img/beernc-type.svg" alt="Beer NC Logo" />
-</ion-header> 
-<ion-content padding>
-  <div *ngIf="nearbyBreweries">
-    <h2>Nearby Locations</h2>
+  <img src="/assets/img/beernc_type_logo.svg" alt="Beer NC Logo" />
+</ion-header>
+<ion-content>
+  <div class="divider" *ngIf="nearbyBreweries">
+    <h2 class="center">Nearby Locations</h2>
     <ion-grid>
       <ion-row>
         <ion-col *ngFor="let nearbyBrewery of nearbyBreweries" (click)="goToBrewery(nearbyBrewery.id)" width-33>
           <img src="{{nearbyBrewery.img}}" />
-          <h3>{{nearbyBrewery.name}}</h3>
-          <span>{{ getDistanceFromCurrent( nearbyBrewery.coords ) }} miles away</span>
+          <div class="ion-col--inner center">
+            <h3>{{nearbyBrewery.name}}</h3>
+            <span>{{ getDistanceFromCurrent( nearbyBrewery.coords ) }} miles</span>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <button ion-button (click)="goToNearby($event)">See More</button>
+    <a block class="center link link--large" (click)="goToNearby($event)">See More</a>
   </div>
-  <div *ngIf="guides">
-    <h2>Brewery Guides</h2>
+  <div class="divider" *ngIf="guides">
+    <h2 class="center">Brewery Guides</h2>
     <ion-grid>
       <ion-row>
         <ion-col *ngFor="let guide of guides" width-33>
           <img src="{{guide.img}}" />
-          <h3>{{guide.name}}</h3>
+          <h3 class="center">{{guide.name}}</h3>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <button ion-button (click)="goToGuides($event)">Browse All Guides</button>
+    <a block class="center link link--large" (click)="goToGuides($event)">Browse All Guides</a>
   </div>
-  <h2>Recently Added</h2>
-  <h2>Top Rated NC Breweries</h2>
+  <div class="divider">
+    <gopc-ad></gopc-ad>
+  </div>
+  <div class="divider">
+    <h2 class="center">Recently Added</h2>
+  </div>
+  <div class="divider">
+    <h2 class="center">Top Rated NC Breweries</h2>
+  </div>
 </ion-content>

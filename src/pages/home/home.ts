@@ -7,6 +7,9 @@ import { Brewery } from '../brewery/brewery';
 import { Guides  } from '../guides/guides';
 import { Nearby }  from '../nearby/nearby';
 
+//components
+import { GopcAd } from '../../components/gopc-ad/gopc-ad';
+
 //vendor
 import * as Geodist from 'geodist';
 
@@ -22,25 +25,25 @@ export class Home {
       id: 1,
       name: 'Wicked Weed Brewing',
       coords: { lat: '34', long: '100' },
-      img: 'https://dummyimage.com/600x400/000/fff'
+      img: 'assets/img/wicked_weed.jpg'
     },
     {
       id: 2,
       name: 'Burial Beer Co.',
       coords: { lat: '48', long: '102' },
-      img: 'https://dummyimage.com/600x400/000/fff'
+      img: 'assets/img/burial.jpg'
     },
     {
       id: 3,
       name: 'Highland Brewing Company',
       coords: { lat: '29', long: '103' },
-      img: 'https://dummyimage.com/600x400/000/fff'
+      img: 'assets/img/highland.jpg'
     }
   ];
   guides: Array<any> = [
-    { id: 4, name: 'Asheville Brewery Guide', img: 'https://dummyimage.com/600x400/000/fff' },
-    { id: 5, name: 'Raleigh Brewery Guide', img: 'https://dummyimage.com/600x400/000/fff' },
-    { id: 6, name: 'Greensboro Brewery Guide', img: 'https://dummyimage.com/600x400/000/fff' }
+    { id: 4, name: 'Asheville Brewery Guide', img: 'assets/img/asheville.jpg' },
+    { id: 5, name: 'Raleigh Brewery Guide', img: 'assets/img/raleigh.jpg' },
+    { id: 6, name: 'Greensboro Brewery Guide', img: 'assets/img/greensboro.jpg' }
   ];
 
   constructor(public navCtrl: NavController ) {
