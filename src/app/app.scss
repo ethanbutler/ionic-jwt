@@ -82,3 +82,10 @@ gopc-ad {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06);
   border: solid 1px rgba(184, 184, 184, 0.35);
 }
+
+.img-scrub {
+  white-space: nowrap;
+  .scroll-content {
+    padding:0!important;
+  }
+}

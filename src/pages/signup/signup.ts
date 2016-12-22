@@ -7,7 +7,8 @@ import { JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 //pages
-import { Home } from '../home/home';
+import { SignIn } from '../signin/signin';
+import { Tabs }   from '../tabs/tabs';
 
 @Component({
   selector: 'page-signup',
@@ -49,11 +50,15 @@ export class SignUp {
     this.error = null;
     this.local.set('id_token', token);
     this.user = this.jwtHelper.decodeToken(token).username;
-    this.navCtrl.push(Home);
+    this.navCtrl.push(Tabs);
   }
 
   handleSubmit($event){
     $event.preventDefault();
+  }
+
+  goToSignIn(){
+    this.navCtrl.push(SignIn);
   }
 
 }

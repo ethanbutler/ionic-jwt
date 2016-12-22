@@ -1,19 +1,22 @@
-<form [formGroup]="credentials" (ngSubmit)="signup($event);">
-  <ion-item>
-    <ion-label>Name</ion-label>
-    <ion-input type="text" formControlName="fullname" placeholder="Name"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Email</ion-label>
-    <ion-input type="email" formControlName="email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Username</ion-label>
-    <ion-input type="username" formControlName="username"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Password</ion-label>
-    <ion-input type="password" formControlName="password"></ion-input>
-  </ion-item>
-  <button ion-button type="submit" [disabled]="!credentials.valid">Sign Up</button>
-</form>
+<ion-content padding>
+  <form [formGroup]="credentials" (ngSubmit)="signup($event);">
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" formControlName="fullname" placeholder="Name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input type="username" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!credentials.valid">Sign Up</button>
+  </form>
+</ion-content>
+<fixed-bottom click="goToSignIn()" text="Already have an account? Sign in"></fixed-bottom>

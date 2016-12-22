@@ -4,15 +4,17 @@ import { App } from './app.component';
 import { Storage } from '@ionic/storage';
 
 //pages
-import { Home }     from '../pages/home/home';
-import { Brewery }  from '../pages/brewery/brewery';
-import { Guides }   from '../pages/guides/guides';
-import { Nearby }   from '../pages/nearby/nearby';
-import { SignIn }   from '../pages/signin/signin';
-import { SignUp }   from '../pages/signup/signup';
-import { Splash }   from '../pages/splash/splash';
-import { Tabs }     from '../pages/tabs/tabs';
-import { GopcAd }   from '../components/gopc-ad/gopc-ad';
+import { Home }        from '../pages/home/home';
+import { Brewery }     from '../pages/brewery/brewery';
+import { Guides }      from '../pages/guides/guides';
+import { Nearby }      from '../pages/nearby/nearby';
+import { SignIn }      from '../pages/signin/signin';
+import { SignUp }      from '../pages/signup/signup';
+import { Splash }      from '../pages/splash/splash';
+import { Tabs }        from '../pages/tabs/tabs';
+
+import { GopcAd }      from '../components/gopc-ad/gopc-ad';
+import { FixedBottom } from '../components/fixed-bottom/fixed-bottom';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { GopcAd }   from '../components/gopc-ad/gopc-ad';
     SignUp,
     Splash,
     Tabs,
-    GopcAd
+    GopcAd,
+    FixedBottom
   ],
   imports: [
     IonicModule.forRoot(App, {tabsPlacment: 'bottom'})
@@ -41,7 +44,8 @@ import { GopcAd }   from '../components/gopc-ad/gopc-ad';
     SignUp,
     Splash,
     Tabs,
-    GopcAd
+    GopcAd,
+    FixedBottom
   ],
   providers: [{
     provide: ErrorHandler,

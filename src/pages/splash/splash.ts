@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 //pages
-import { Home } from '../home/home';
+import { Tabs } from '../tabs/tabs';
 import { SignUp } from '../signup/signup';
 import { SignIn } from '../signin/signin';
 
@@ -20,7 +20,7 @@ export class Splash {
     // if user is authenticated, redirect them to homepage
     this.local.get('id_token').then(token => {
       if(!token) return;
-      this.navCtrl.push(Home);
+      this.navCtrl.push(Tabs);
     }).catch(error =>{
       console.log(error)
     });
@@ -38,7 +38,7 @@ export class Splash {
 
   goToHome(){
     console.log('home');
-    this.navCtrl.push(Home);
+    this.navCtrl.push(Tabs);
   }
 
 }

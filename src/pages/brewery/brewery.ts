@@ -11,22 +11,22 @@ export class Brewery {
     id: 1,
     name: 'Wicked Weed Brewing',
     imgs: [
-      '1',
-      '2',
-      '3'
+      'assets/img/wicked_weed.jpg',
+      'assets/img/burial.jpg',
+      'assets/img/highland.jpg'
     ],
     description: 'Hip brewer with a tasting room & a restaurant serving high-end, locally-sourced New American fare',
     address: '91 Biltmore Ave, Asheville, NC 28801',
     url: 'wickedweedbrewing.com',
     tel: '(828) 575-9599',
     hours: {
-      'S': 'Closed',
-      'M': '2:00pm - 9:00pm',
-      'T': '2:00pm - 9:00pm',
-      'W': '2:00pm - 9:00pm',
-      'Th': '11:00am - 12:00am',
-      'F': '11:00am - 12:00am',
-      'Sa': '11:00am - 12.00am'
+      'Sun': 'Closed',
+      'Mon': '2:00pm - 9:00pm',
+      'Tue': '2:00pm - 9:00pm',
+      'Wed': '2:00pm - 9:00pm',
+      'Thu': '11:00am - 12:00am',
+      'Fri': '11:00am - 12:00am',
+      'Sat': '11:00am - 12.00am'
     },
     amenities: [
       'Bar', 'Patio', 'Kids welcome', 'Arcade', 'Outdoor seating'

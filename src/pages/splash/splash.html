@@ -1,8 +1,10 @@
 <ion-content padding>
-  <img src="../../assets/img/logo.svg" alt="Beer NC Logo" />
-  <p>Presented by</p>
-  <img src="../../assets/img/gopc.svg" alt="Great Outdoor Provision Company Logo" />
+  <div class="center">
+    <img src="assets/img/beernc_logo.svg" alt="Beer NC Logo" />
+    <p>Presented by</p>
+    <img src="assets/img/gopc_logo.png" alt="Great Outdoor Provision Company Logo" />
+  </div>
   <button (click)="goToSignUp()" ion-button block>Sign Up</button>
   <button (click)="goToSignIn()" ion-button block>Sign In</button>
-  <button (click)="goToHome()">Skip Sign In</button>
 </ion-content>
+<fixed-bottom (click)="goToSignUp()" text="Skip Sign In"></fixed-bottom>
