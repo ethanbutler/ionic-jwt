@@ -1,5 +1,6 @@
 fixed-bottom {
   position: fixed;
+  z-index: 10000;
   width: 100%;
   bottom: 0;
   padding: 18px 0;
