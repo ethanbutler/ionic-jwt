@@ -25,6 +25,9 @@ import { Top }         from '../pages/top/top';
 import { GopcAd }      from '../components/gopc-ad/gopc-ad';
 import { FixedBottom } from '../components/fixed-bottom/fixed-bottom';
 
+//pipes
+import { Removehttp}   from '../pipes/removehttp';
+
 @NgModule({
   declarations: [
     App,
@@ -43,7 +46,8 @@ import { FixedBottom } from '../components/fixed-bottom/fixed-bottom';
     Tabs,
     Top,
     GopcAd,
-    FixedBottom
+    FixedBottom,
+    Removehttp
   ],
   imports: [
     IonicModule.forRoot(App, {tabsPlacment: 'bottom'})

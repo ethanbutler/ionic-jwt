@@ -8,7 +8,15 @@ page-brewery {
   border: solid 1px #b8b8b8;
   margin: 6px 4px;
   strong,
-  small{
+  small {
+    font-size: 14px;
     display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  small {
+    color: #B8B8B8;
   }
 }

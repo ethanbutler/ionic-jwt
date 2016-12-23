@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+//vendor
+import * as Dateformat from 'dateformat';
+
 //pages
 import { Rating } from '../rating/rating';
 import { Hours }  from '../hours/hours';
@@ -21,7 +24,7 @@ export class Brewery {
     ],
     description: 'Hip brewer with a tasting room & a restaurant serving high-end, locally-sourced New American fare',
     address: '91 Biltmore Ave, Asheville, NC 28801',
-    url: 'wickedweedbrewing.com',
+    url: 'http://wickedweedbrewing.com',
     tel: '(828) 575-9599',
     hours: {
       'Sun': 'Closed',
@@ -45,11 +48,26 @@ export class Brewery {
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   getTodaysHours(){
-    return 'Today\'s Hours';
+    let today = Dateformat('ddd');
+    return this.data.hours[today];
+  }
+
+  openHours(){
+    this.navCtrl.push(Hours, {
+      name: this.data.name,
+      hours: this.data.hours
+    })
+  }
+
+  openWebsite(url){
+    window.open(url, '_system');
   }
 
   openRating(){
-    this.navCtrl.push()
+    this.navCtrl.push(Rating, {
+      id: this.data.id,
+      name: this.data.name
+    })
   }
 
 }

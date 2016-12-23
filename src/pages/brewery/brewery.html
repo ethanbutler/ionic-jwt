@@ -12,28 +12,28 @@
     <button ion-button block>Check-In</button>
     <ion-grid>
       <ion-row>
-        <ion-col width=50>
-          <div class="brewery-info">
+        <ion-col width-50>
+          <div class="brewery-info"><!--TODO: directions -->
             <strong>Get directions</strong>
             <small>Get some beer</small>
           </div>
         </ion-col>
-        <ion-col width=50>
-          <div class="brewery-info">
+        <ion-col width-50>
+          <div class="brewery-info" (click)="openWebsite(data.url)">
             <strong>Visit website</strong>
-            <small>{{data.url}}</small>
+            <small>{{data.url | removehttp}}</small>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col width=50>
-          <div class="brewery-info">
+        <ion-col width-50>
+          <div class="brewery-info"><!--TODO: figure out how to dial natively-->
             <strong>Call</strong>
             <small>{{data.tel}}</small>
           </div>
         </ion-col>
-        <ion-col width=50>
-          <div class="brewery-info">
+        <ion-col width-50>
+          <div class="brewery-info" (click)="openHours()">
             <strong>Open now</strong>
             <small>{{getTodaysHours()}}</small>
           </div>
@@ -54,7 +54,7 @@
         {{rating.value}}
       </ion-item>
     </ion-list>
-    <button ion-button block>Rate brewery</button>
+    <button ion-button block (click)="openRating()">Rate brewery</button>
     <h2>Share</h2>
     <ion-grid>
       <ion-row>
