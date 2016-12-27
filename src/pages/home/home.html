@@ -2,20 +2,8 @@
   <img src="/assets/img/beernc_type_logo.svg" alt="Beer NC Logo" />
 </ion-header>
 <ion-content>
-  <div class="divider" *ngIf="nearbyBreweries">
-    <h2 class="center">Nearby Locations</h2>
-    <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let nearbyBrewery of nearbyBreweries" (click)="goToBrewery(nearbyBrewery.id)" width-33>
-          <img src="{{nearbyBrewery.img}}" />
-          <div class="ion-col--inner center">
-            <h3>{{nearbyBrewery.name}}</h3>
-            <span>{{ getDistanceFromCurrent( nearbyBrewery.coords ) }} miles</span>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <a block class="center link link--large" (click)="goToNearby($event)">See More</a>
+  <div class="divider">
+    <nearby [showLink]="true"></nearby>
   </div>
   <div class="divider" *ngIf="guides">
     <h2 class="center">Brewery Guides</h2>

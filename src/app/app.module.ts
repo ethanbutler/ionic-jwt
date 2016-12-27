@@ -24,6 +24,7 @@ import { Top }         from '../pages/top/top';
 //components
 import { GopcAd }      from '../components/gopc-ad/gopc-ad';
 import { FixedBottom } from '../components/fixed-bottom/fixed-bottom';
+import { NearbyComponent } from '../components/nearby/nearby';
 
 //pipes
 import { Removehttp}   from '../pipes/removehttp';
@@ -47,7 +48,8 @@ import { Removehttp}   from '../pipes/removehttp';
     Top,
     GopcAd,
     FixedBottom,
-    Removehttp
+    Removehttp,
+    NearbyComponent
   ],
   imports: [
     IonicModule.forRoot(App, {tabsPlacment: 'bottom'})
@@ -70,7 +72,8 @@ import { Removehttp}   from '../pipes/removehttp';
     Tabs,
     Top,
     GopcAd,
-    FixedBottom
+    FixedBottom,
+    NearbyComponent
   ],
   providers: [{
     provide: ErrorHandler,
