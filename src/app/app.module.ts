@@ -8,6 +8,8 @@ import { App } from './app.component';
 //pages
 import { Brewery }     from '../pages/brewery/brewery';
 import { Breweries }   from '../pages/breweries/breweries';
+import { Edit }        from '../pages/edit/edit';
+import { Feedback }    from '../pages/feedback/feedback';
 import { Guide }       from '../pages/guide/guide';
 import { Guides }      from '../pages/guides/guides';
 import { Home }        from '../pages/home/home';
@@ -19,6 +21,7 @@ import { SignIn }      from '../pages/signin/signin';
 import { SignUp }      from '../pages/signup/signup';
 import { Splash }      from '../pages/splash/splash';
 import { Tabs }        from '../pages/tabs/tabs';
+import { Terms }       from '../pages/terms/terms';
 import { Top }         from '../pages/top/top';
 
 //components
@@ -35,6 +38,8 @@ import { Removehttp}   from '../pipes/removehttp';
     App,
     Brewery,
     Breweries,
+    Edit,
+    Feedback,
     Guide,
     Guides,
     Home,
@@ -46,6 +51,7 @@ import { Removehttp}   from '../pipes/removehttp';
     SignUp,
     Splash,
     Tabs,
+    Terms,
     Top,
     GopcAd,
     FixedBottom,
@@ -61,6 +67,8 @@ import { Removehttp}   from '../pipes/removehttp';
     App,
     Brewery,
     Breweries,
+    Edit,
+    Feedback,
     Guide,
     Guides,
     Home,
@@ -72,6 +80,7 @@ import { Removehttp}   from '../pipes/removehttp';
     SignUp,
     Splash,
     Tabs,
+    Terms,
     Top,
     GopcAd,
     FixedBottom,

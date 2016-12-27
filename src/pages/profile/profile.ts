@@ -1,22 +1,33 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the Profile page.
+//pages
+import { Edit } from '../edit/edit';
+import { Feedback } from '../feedback/feedback';
+import { Terms } from '../terms/terms';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
 })
 export class Profile {
-
+  public user: any = {
+    name: "Kyle Lambert",
+    username: "beerdude2012",
+    avatar: "assets/img/avatar.jpg"
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+  goToSettings(){
+    this.navCtrl.push(Edit);
+  }
+
+  goToTerms(){
+    this.navCtrl.push(Terms);
+  }
+
+  goToFeedback(){
+    this.navCtrl.push(Feedback);
   }
 
 }
