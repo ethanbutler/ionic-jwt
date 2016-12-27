@@ -7,10 +7,14 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class Nearby {
 
+  public cities: Array<any> = [
+    'Asheville', 'Greensboro', 'Raleigh'
+  ];
+  public selectedCity: string = 'Greensboro';
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NearbyPage');
+    console.log(this.cities);
   }
 
 }

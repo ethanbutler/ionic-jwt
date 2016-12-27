@@ -4,6 +4,12 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
+  <div class="nearby-selector">
+    <ion-icon name="pin"></ion-icon>
+    <ion-select [(ngModel)]="selectedCity">
+      <ion-option *ngFor="let city of cities" value="{{city}}">{{city}}</ion-option>
+    </ion-select>
+  </div>
   <div class="divider">
     <nearby></nearby>
   </div>
