@@ -1,5 +1,5 @@
-import { NavController, NavParams } from 'ionic-angular';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers } from '@angular/http';
 import { Storage } from '@ionic/storage';

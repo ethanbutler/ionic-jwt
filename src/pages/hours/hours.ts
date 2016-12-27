@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Isclosed } from '../pipes/isclosed';
 
 @Component({
   selector: 'page-hours',

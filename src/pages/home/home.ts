@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 //pages
-import { Brewery } from '../brewery/brewery';
 import { Guides  } from '../guides/guides';
-import { Nearby }  from '../nearby/nearby';
-
-//components
-import { GopcAd } from '../../components/gopc-ad/gopc-ad';
 
 @Component({
   selector: 'page-home',

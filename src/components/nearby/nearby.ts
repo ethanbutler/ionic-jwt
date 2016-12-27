@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular';
 
 //pages
 import { Brewery } from '../../pages/brewery/brewery';
-import { Guides  } from '../../pages/guides/guides';
 import { Nearby }  from '../../pages/nearby/nearby';
 
 //vendor
