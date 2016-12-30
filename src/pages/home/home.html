@@ -3,7 +3,7 @@
 </ion-header>
 <ion-content>
   <div class="divider" *ngIf="currentPos">
-    <brewery-list [args]="{count:3, lat: getCoords('lat'), lon: getCoords('lon')}"></brewery-list>
+    <brewery-list [args]="{count:3, lat: currentPos.lat, lon: currentPos.lon}"></brewery-list>
     <a block class="center link link--large" (click)="goToNearby($event)">See More</a>
   </div>
   <div class="divider" *ngIf="!currentPos">

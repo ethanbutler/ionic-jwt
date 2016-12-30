@@ -6,6 +6,9 @@ import { Geolocation } from 'ionic-native';
 import { Guides  } from '../guides/guides';
 import { Nearby }  from '../nearby/nearby';
 
+//providers
+import { Distance } from '../../providers/distance';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -20,17 +23,11 @@ export class Home {
 
   currentPos: Object = null;
 
-  constructor(public navCtrl: NavController ) {
-    Geolocation.getCurrentPosition()
-      .then(pos => {
-        this.currentPos = { lat: pos.coords.latitude, lon: pos.coords.longitude }
-      }).catch(err => {
-        console.log(err)
+  constructor(public navCtrl: NavController, public distance: Distance) {
+    distance.getCoords()
+      .then(data => {
+        this.currentPos = data;
       });
-  }
-
-  getCoords(type){
-    return this.currentPos[type] || 0;
   }
 
   goToGuides(){
