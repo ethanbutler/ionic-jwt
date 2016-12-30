@@ -23,6 +23,7 @@
     "angular2-jwt": "^0.1.27",
     "dateformat": "^2.0.0",
     "geodist": "^0.2.1",
+    "google-maps": "^3.2.1",
     "ionic-angular": "2.0.0-rc.4",
     "ionic-native": "2.2.11",
     "ionicons": "3.0.0",

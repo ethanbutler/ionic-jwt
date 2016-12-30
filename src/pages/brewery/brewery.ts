@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 //vendor
 import * as Dateformat from 'dateformat';
+import * as GoogleMaps from 'google-maps';
 
 //pages
 import { Rating } from '../rating/rating';
@@ -46,9 +47,37 @@ export class Brewery {
     ]
   };
   data: any = null;
-  constructor(public navCtrl: NavController, public navParams: NavParams){
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+  maps: any = GoogleMaps;
+  constructor(public navCtrl: NavController, public navParams: NavParams ){
     this.data = navParams.get('data');
-    console.log(this.data);
+
+    this.maps.KEY = 'AIzaSyBiiqwF_VIiazs2ALkb39L7Mdjf8Xhc0xE';
+    this.maps.load(google => {
+      let lat = parseFloat(this.data.latitude);
+      let lon = parseFloat(this.data.longitude);
+      let latLng = new google.maps.LatLng(lat, lon);
+      let mapOptions =  {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+        scrollwheel: false
+      };
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+      let marker = new google.maps.Marker({
+        map: this.map,
+        position: this.map.getCenter()
+      });
+      
+      let info = new google.maps.InfoWindow({
+        position: this.map.getCenter(),
+        content: `<h4>${this.data.name}</h4><p>${this.data.breweryData.brewery_why_visit}</p>`
+      });
+      info.open(this.map);
+    })
   }
 
   getTodaysHours(){
