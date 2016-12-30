@@ -19,7 +19,6 @@ export class BreweryList {
   constructor(public navCtrl: NavController, private breweries: BreweriesProvider, private distance: Distance ) {}
 
   ngOnInit(){
-    console.log(this.args);
     this.breweries.getBreweries(this.args)
       .then(data => {
         this.data = data;
@@ -27,7 +26,11 @@ export class BreweryList {
   }
 
   goToBrewery(id){
-    this.navCtrl.push(Brewery, { id: id });
+    for( let brewery of this.data ){
+      if( brewery.id === id ){
+        return this.navCtrl.push(Brewery, { data: brewery });
+      }
+    }
   }
 
 }

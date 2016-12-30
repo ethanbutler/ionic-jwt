@@ -14,7 +14,7 @@ import { Hours }  from '../hours/hours';
 })
 export class Brewery {
 
-  data: any = {
+  dummyData: any = {
     id: 1,
     name: 'Wicked Weed Brewing',
     imgs: [
@@ -45,17 +45,21 @@ export class Brewery {
       { param: 'Location', value: 4.2 }
     ]
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  data: any = null;
+  constructor(public navCtrl: NavController, public navParams: NavParams){
+    this.data = navParams.get('data');
+    console.log(this.data);
+  }
 
   getTodaysHours(){
     let today = Dateformat('ddd');
-    return this.data.hours[today];
+    return this.dummyData.hours[today];
   }
 
   openHours(){
     this.navCtrl.push(Hours, {
-      name: this.data.name,
-      hours: this.data.hours
+      name: this.dummyData.name,
+      hours: this.dummyData.hours
     })
   }
 
@@ -65,8 +69,8 @@ export class Brewery {
 
   openRating(){
     this.navCtrl.push(Rating, {
-      id: this.data.id,
-      name: this.data.name
+      id: this.dummyData.id,
+      name: this.dummyData.name
     })
   }
 

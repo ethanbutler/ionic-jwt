@@ -7,6 +7,6 @@ import { Injectable, Pipe } from '@angular/core';
 export class Removehttp {
   transform(value, args) {
     value = value + ''; // make sure it's a string
-    return value.replace('http://','').replace('https://','');
+    return value.replace('http://','').replace('https://','').replace('www.','');
   }
 }

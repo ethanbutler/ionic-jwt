@@ -1,8 +1,17 @@
 page-brewery {
-
+  .button {
+    background-color: #23221E;
+    font-size: 14px;
+  }
+  .label {
+    font-size: 14px;
+  }
 }
 
+button.brewery-info,
 .brewery-info {
+  color: map-get($colors, dark);
+  background: none;
   padding: 7px 13px 9px;
   border-radius: 5px;
   border: solid 1px #b8b8b8;
@@ -19,4 +28,19 @@ page-brewery {
   small {
     color: #B8B8B8;
   }
+  &--social {
+    text-align: center;
+    font-weight: 700;
+    ion-icon {
+      display: block;
+      font-size: 2em;
+      color: #B9B9B8;
+      &.ion-logo-facebook { color: #3C5999; }
+      &.ion-logo-twitter { color: #55ACEE; }
+    }
+  }
+}
+
+button.brewery-info {
+  font-weight: 700;
 }

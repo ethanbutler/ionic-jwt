@@ -32,6 +32,28 @@ ion-col {
   }
 }
 
+ion-list.ion-list-col2 {
+  display: flex;
+  flex-flow: row wrap;
+  border-bottom: 1px solid rgba(151,151,151,.2);
+  > ion-item {
+    width: 50%;
+  }
+  > .item-block:first-of-type {
+    border-top: none;
+  }
+  > .item-block {
+    border-bottom: 1px solid rgba(151,151,151,.2);
+    &:last-of-type,
+    &:nth-last-of-type(2):nth-of-type(2n-1){
+      border-bottom: none;
+    }
+    > .item-inner {
+      border-bottom: none;
+    }
+  }
+}
+
 .item {
   padding-left: 0;
 }
@@ -54,7 +76,8 @@ h3 {
 }
 
 .divider {
-  border: solid 1px rgba(150, 150, 150, 0.2);
+  border-top: solid 1px rgba(150, 150, 150, 0.2);
+  border-bottom: solid 1px rgba(150, 150, 150, 0.2);
   padding-bottom: 26px;
 }
 

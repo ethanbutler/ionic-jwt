@@ -2,17 +2,22 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the Brewery provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
-export class Brewery {
+export class BreweryProvider {
 
-  constructor(public http: Http) {
-    console.log('Hello Brewery Provider');
+  data: Object = null;
+  endpoint: string = 'http://dev.beerncapp.com:3000/api/v1/breweries/';
+  constructor(public http: Http) {}
+
+  public loadBrewery(id){
+    return new Promise(resolve =>{
+      this.http.get(this.endpoint + id)
+      .map(res => res.json())
+      .subscribe(data => {
+        this.data = data;
+        resolve(this.data);
+      })
+    });
   }
 
 }
