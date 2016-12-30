@@ -25,13 +25,17 @@ import { Terms }       from '../pages/terms/terms';
 import { Top }         from '../pages/top/top';
 
 //components
-import { GopcAd }      from '../components/gopc-ad/gopc-ad';
-import { FixedBottom } from '../components/fixed-bottom/fixed-bottom';
-import { NearbyComponent } from '../components/nearby/nearby';
+import { GopcAd }         from '../components/gopc-ad/gopc-ad';
+import { FixedBottom }    from '../components/fixed-bottom/fixed-bottom';
 import { GuideComponent } from '../components/guide/guide';
+import { BreweryList }    from '../components/brewery-list/brewery-list';
 
 //pipes
-import { Removehttp}   from '../pipes/removehttp';
+import { Removehttp }   from '../pipes/removehttp';
+
+//providers
+import { BreweriesProvider } from '../providers/breweries';
+import { Distance }          from '../providers/distance';
 
 @NgModule({
   declarations: [
@@ -56,8 +60,8 @@ import { Removehttp}   from '../pipes/removehttp';
     GopcAd,
     FixedBottom,
     Removehttp,
-    NearbyComponent,
-    GuideComponent
+    GuideComponent,
+    BreweryList
   ],
   imports: [
     IonicModule.forRoot(App, {tabsPlacment: 'bottom'})
@@ -84,12 +88,17 @@ import { Removehttp}   from '../pipes/removehttp';
     Top,
     GopcAd,
     FixedBottom,
-    NearbyComponent,
-    GuideComponent
+    GuideComponent,
+    BreweryList
   ],
-  providers: [{
-    provide: ErrorHandler,
-    useClass: IonicErrorHandler,
-  }, Storage ]
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: IonicErrorHandler,
+    },
+    Storage,
+    BreweriesProvider,
+    Distance
+  ]
 })
 export class AppModule {}

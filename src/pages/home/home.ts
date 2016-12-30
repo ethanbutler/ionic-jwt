@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
 
 //pages
 import { Guides  } from '../guides/guides';
+import { Nearby }  from '../nearby/nearby';
 
 @Component({
   selector: 'page-home',
@@ -16,14 +18,27 @@ export class Home {
     { id: 6, name: 'Greensboro Brewery Guide', img: 'assets/img/greensboro.jpg' }
   ];
 
-  constructor(public navCtrl: NavController ) {
+  currentPos: Object = null;
 
+  constructor(public navCtrl: NavController ) {
+    Geolocation.getCurrentPosition()
+      .then(pos => {
+        this.currentPos = { lat: pos.coords.latitude, lon: pos.coords.longitude }
+      }).catch(err => {
+        console.log(err)
+      });
   }
 
+  getCoords(type){
+    return this.currentPos[type] || 0;
+  }
 
-  goToGuides($event){
-    $event.preventDefault();
+  goToGuides(){
     this.navCtrl.push(Guides);
+  }
+
+  goToNearby(){
+    this.navCtrl.push(Nearby);
   }
 
 }
