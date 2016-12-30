@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 //vendor
@@ -48,11 +48,20 @@ export class Brewery {
   };
   data: any = null;
   @ViewChild('map') mapElement: ElementRef;
+  @ViewChildren('ratings') ratingVals: QueryList<any>;
   map: any;
   maps: any = GoogleMaps;
   constructor(public navCtrl: NavController, public navParams: NavParams ){
     this.data = navParams.get('data');
+    this.initMap();
+  }
 
+  getTodaysHours(){
+    let today = Dateformat('ddd');
+    return this.dummyData.hours[today];
+  }
+
+  initMap(){
     this.maps.KEY = 'AIzaSyBiiqwF_VIiazs2ALkb39L7Mdjf8Xhc0xE';
     this.maps.load(google => {
       let lat = parseFloat(this.data.latitude);
@@ -71,7 +80,7 @@ export class Brewery {
         map: this.map,
         position: this.map.getCenter()
       });
-      
+
       let info = new google.maps.InfoWindow({
         position: this.map.getCenter(),
         content: `<h4>${this.data.name}</h4><p>${this.data.breweryData.brewery_why_visit}</p>`
@@ -80,9 +89,22 @@ export class Brewery {
     })
   }
 
-  getTodaysHours(){
-    let today = Dateformat('ddd');
-    return this.dummyData.hours[today];
+  ngAfterViewInit(){
+    this.ratingVals.forEach(ratingVal => {
+      let element = ratingVal.nativeElement;
+      let rating = element.dataset.rating.split('.');
+      let wholeStars = parseInt(rating[0]);
+      for(let i = 0; i < wholeStars+1; i++){
+        let children = element.childNodes[i].childNodes;
+        if( children.length ){
+          children[0].style.width = '100%';
+        }
+      }
+      if(rating[1]){
+       let child = element.childNodes[wholeStars+1].childNodes[0];
+       child.style.width = (rating[1] / 10) * 100 + '%';
+      }
+    });
   }
 
   openHours(){

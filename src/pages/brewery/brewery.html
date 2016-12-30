@@ -60,8 +60,11 @@
     <h2>{{data.numRatings}} Ratings</h2>
     <ion-list>
       <ion-item *ngFor="let rating of dummyData.ratings">
-        {{rating.param}}
-        {{rating.value}}
+        <span item-left>{{rating.param}}</span>
+        <span item-right>
+          <span class="rating-mask" #ratings [attr.data-rating]="rating.value"><span *ngFor="let i of [1,2,3,4,5]" class="rating-val"><span class="rating-valInner"></span></span></span>
+          {{rating.value}}
+        </span>
       </ion-item>
     </ion-list>
     <button ion-button block (click)="openRating()">Rate brewery</button>
