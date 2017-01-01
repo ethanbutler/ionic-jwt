@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 
 //pages
 import { Tabs } from '../tabs/tabs';
 import { SignUp } from '../signup/signup';
 import { SignIn } from '../signin/signin';
+
+//providers
+import { User } from '../../providers/user';
 
 @Component({
   selector: 'page-splash',
@@ -13,21 +15,18 @@ import { SignIn } from '../signin/signin';
 })
 export class Splash {
 
-  local: Storage = new Storage();
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public user: User) {}
 
   ionViewDidLoad(){
-    // if user is authenticated, redirect them to homepage
-    this.local.get('id_token').then(token => {
-      if(!token) return;
-      this.navCtrl.push(Tabs);
-    }).catch(error =>{
-      console.log(error)
-    });
+    this.user.isLoggedIn().then(isUserLoggedIn => {
+      if(isUserLoggedIn){
+        this.navCtrl.push(Tabs);
+      }
+    })
   }
 
   goToSignUp(){
-    console.log('signup');
     this.navCtrl.push(SignUp);
   }
 

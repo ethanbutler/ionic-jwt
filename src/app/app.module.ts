@@ -36,6 +36,8 @@ import { Removehttp }   from '../pipes/removehttp';
 //providers
 import { BreweriesProvider } from '../providers/breweries';
 import { Distance }          from '../providers/distance';
+import { RatingProvider }    from '../providers/rating';
+import { User }              from '../providers/user';
 
 @NgModule({
   declarations: [
@@ -98,7 +100,9 @@ import { Distance }          from '../providers/distance';
     },
     Storage,
     BreweriesProvider,
-    Distance
+    Distance,
+    RatingProvider,
+    User
   ]
 })
 export class AppModule {}

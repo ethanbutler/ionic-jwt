@@ -43,7 +43,7 @@ export class Brewery {
     ratings: [
       { param: 'Beer Quality', value: 4.5 },
       { param: 'Atmosphere', value: 4.8 },
-      { param: 'Location', value: 4.2 }
+      { param: 'Location', value: 5 }
     ]
   };
   data: any = null;
@@ -120,8 +120,8 @@ export class Brewery {
 
   openRating(){
     this.navCtrl.push(Rating, {
-      id: this.dummyData.id,
-      name: this.dummyData.name
+      id: this.data.id,
+      name: this.data.name
     })
   }
 

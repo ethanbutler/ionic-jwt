@@ -1,3 +1,43 @@
 page-rating {
 
 }
+
+.rating-group {
+  margin: 0 0 35px;
+  text-align: center;
+}
+
+.rating-array {
+  position: relative;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin: 0 6px;
+  input {
+    opacity: 0;
+  }
+  &:after,
+  span {
+    position: absolute;
+    pointer-events: none;
+  }
+  &:after {
+    content: '';
+    background-image: url('/assets/img/starmask.svg');
+    background-size: cover;
+    top: -2px;
+    right: -2px;
+    left: -2px;
+    bottom: -2px;
+  }
+  span {
+    background-color: #D8D8D8;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+  span.highlighted {
+    background: map-get($colors, light);
+  }
+}
