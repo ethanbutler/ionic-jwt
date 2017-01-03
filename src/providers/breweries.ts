@@ -23,6 +23,7 @@ export class BreweriesProvider {
       this.http.get(this.endpoint + argList)
         .map(res => res.json() )
         .subscribe(data => {
+          console.log(data);
           this.data = data;
           resolve(this.data);
         });

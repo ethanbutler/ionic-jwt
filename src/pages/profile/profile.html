@@ -4,11 +4,11 @@
 <ion-content padding>
   <div class="divider">
     <div class="profile-avatar">
-      <img src="{{user.avatar}}" />
+      <img src="{{dummyUser.avatar}}" />
     </div>
     <div class="profile-name">
-      <strong>{{user.name}}</strong>
-      <small>{{user.username}}</small>
+      <strong>{{dummyUser.name}}</strong>
+      <small>{{dummyUser.username}}</small>
     </div>
   </div>
   <div class="divider">
@@ -17,6 +17,6 @@
   </div>
   <div class="divider">
     <button block ion-button (click)="goToFeedback()">Feedback and support</button>
-    <button block ion-button>Log out</button><!-- TODO: add logout provider -->
+    <button block ion-button (click)="logOut()">Log out</button><!-- TODO: add logout provider -->
   </div>
 </ion-content>

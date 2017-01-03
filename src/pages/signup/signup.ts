@@ -10,30 +10,30 @@ import 'rxjs/add/operator/map';
 import { SignIn } from '../signin/signin';
 import { Tabs }   from '../tabs/tabs';
 
+//providers
+import { User } from '../../providers/user';
+
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
 export class SignUp {
 
-  SIGNUP_URL: string = 'http://localhost:3001/users';
+  SIGNUP_URL: string = 'http://dev.beerncapp.com:3000/api/v1/users';
+  LOGIN_URL: string = 'http://dev.beerncapp.com:3000/api/v1/auth/login';
   contentHeader: Headers = new Headers({'content-type': 'application/json'});
   credentials: any;
-  jwtHelper: JwtHelper = new JwtHelper();
-  local: Storage = new Storage;
-  user: string;
   error: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private http: Http ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private http: Http, private user: User ) {
     this.credentials = this.formBuilder.group({
-      fullname: ['', Validators.required],
-      email: ['', Validators.required], //TODO email validation
       username: ['', Validators.required],
+      email: ['', Validators.required], //TODO email validation
       password: ['', Validators.required]
     });
   }
 
-  signup($event){
+  onSubmit($event){
     $event.preventDefault();
     let credentials = this.credentials.value;
     this.http.post(this.SIGNUP_URL, JSON.stringify(credentials), {
@@ -41,20 +41,37 @@ export class SignUp {
     })
     .map(res => res.json())
     .subscribe(
-      data => this.authSuccess(data.id_token),
+      data => {
+        this.afterSignup(data, token => {
+          this.user.login(token, () =>{
+            console.log('aftersignup cb');
+            this.error = null;
+            this.navCtrl.push(Tabs);
+          })
+        });
+      },
       err => { this.error = err._body }
     )
   }
 
-  authSuccess(token){
-    this.error = null;
-    this.local.set('id_token', token);
-    this.user = this.jwtHelper.decodeToken(token).username;
-    this.navCtrl.push(Tabs);
-  }
-
-  handleSubmit($event){
-    $event.preventDefault();
+  afterSignup(data, cb?: Function){
+    console.log('after signup');
+    let credentials = {
+      email: data.user.email,
+      password: this.credentials.value.password
+    };
+    this.http.post(this.LOGIN_URL, JSON.stringify(credentials), {
+      headers: this.contentHeader
+    })
+    .map(res => res.json())
+    .subscribe(
+      data => {
+        if(cb) cb(data)
+      },
+      err => {
+        this.error = err._body
+      }
+    )
   }
 
   goToSignIn(){

@@ -1,49 +1,15 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header>
 <ion-content padding>
-  <div *ngIf="!user">
-    <div padding>
-      <ion-segment [(ngModel)]="authType">
-        <ion-segment-button value="login" (click)="switchTabs()">Login</ion-segment-button>
-        <ion-segment-button value="signup" (click)="switchTabs()">Signup</ion-segment-button>
-      </ion-segment>
-    </div>
-    <div [ngSwitch]="authType">
-      <div *ngSwitchCase="'login'">
-        <p *ngIf="error">{{ error }}</p>
-        <form [formGroup]="credentials" (ngSubmit)="login($event);">
-          <ion-item>
-            <ion-label>Username</ion-label>
-            <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Password</ion-label>
-            <ion-input type="password" formControlName="password"></ion-input>
-          </ion-item>
-          <button ion-button type="submit" [disabled]="!credentials.valid">Log in</button>
-        </form>
-      </div>
-      <div *ngSwitchCase="'signup'">
-        <p *ngIf="error">{{ error }}</p>
-        <form [formGroup]="credentials" (ngSubmit)="signup($event);">
-          <ion-item>
-            <ion-label>Username</ion-label>
-            <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Password</ion-label>
-            <ion-input type="password" formControlName="password"></ion-input>
-          </ion-item>
-          <button ion-button type="submit" [disabled]="!credentials.valid">Sign Up</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="user">
-    <p>You're signed in, {{ user }}</p>
-    <button ion-button block (click)="logout()">Logout</button>
-  </div>
+  <p *ngIf="error">{{ error }}</p>
+  <form [formGroup]="credentials" (ngSubmit)="login($event);">
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="email" formControlName="email" placeholder="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!credentials.valid">Log in</button>
+  </form>
 </ion-content>
+<fixed-bottom (click)="goToSignUp()" text="Need to create an account?"></fixed-bottom>

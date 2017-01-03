@@ -1,6 +1,9 @@
 page-splash {
   ion-content {
     background-image: url('/assets/img/splash.jpg');
-    background-size: cover;  
+    background-size: cover;
+  }
+  + page-tabs ion-tabs {
+    display: none!important;
   }
 }

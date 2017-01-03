@@ -6,32 +6,29 @@ import { Storage } from '@ionic/storage';
 import { JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
+//pages
+import { SignUp } from '../signup/signup';
+import { Tabs }   from '../tabs/tabs';
+
+//providers
+import { User } from '../../providers/user';
+
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html'
 })
 export class SignIn {
 
-  LOGIN_URL: string = 'http://localhost:3001/sessions/create';
-  SIGNUP_URL: string = 'http://localhost:3001/users';
+  LOGIN_URL: string = 'http://dev.beerncapp.com:3000/api/v1/auth/login';
   credentials: any;
   contentHeader: Headers = new Headers({"Content-Type": "application/json"});
-  jwtHelper: JwtHelper = new JwtHelper();
-  local: Storage = new Storage();
-  user: string;
   error: string;
   authType: string;
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private http: Http) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private http: Http, private user: User) {
     this.authType = 'login';
     this.credentials = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
-    });
-    this.local.get('id_token').then(token => {
-      if(!token) return;
-      this.user = this.jwtHelper.decodeToken(token).username;
-    }).catch(error =>{
-      console.log(error)
     });
   }
 
@@ -43,26 +40,19 @@ export class SignIn {
     })
     .map(res => res.json())
     .subscribe(
-      data => this.authSuccess(data.id_token),
-      err => { this.error = err._body }
+      data => this.user.login(data, () =>{
+        this.error = null;
+        this.navCtrl.push(Tabs);
+      }),
+      err => {
+        console.log(err);
+        this.error = err._body
+      }
     )
   }
 
-  logout(){
-    this.user = null;
-    this.local.remove('id_token');
+  goToSignUp(){
+    this.navCtrl.push(SignUp);
   }
-
-  switchTabs(){
-    this.error = null;
-    this.credentials.reset();
-  }
-
-  authSuccess(token){
-    this.error = null;
-    this.local.set('id_token', token);
-    this.user = this.jwtHelper.decodeToken(token).username;
-  }
-
 
 }
