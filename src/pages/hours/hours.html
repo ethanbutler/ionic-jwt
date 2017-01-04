@@ -8,31 +8,31 @@
   <ion-list>
     <ion-item>
       <span>Sunday</span>
-      <span [ngClass]="{closed: hours.Sun=='Closed'}" item-right>{{hours.Sun}}</span>
+      <span [ngClass]="{closed: !hours.Sunday}" item-right>{{hours.Sunday || 'Closed'}}</span>
     </ion-item>
     <ion-item>
       <span>Monday</span>
-      <span [ngClass]="{closed: hours.Mon=='Closed'}" item-right>{{hours.Mon}}</span>
+      <span [ngClass]="{closed: !hours.Monday}" item-right>{{hours.Monday || 'Closed'}}</span>
     </ion-item>
     <ion-item>
       <span>Tuesday</span>
-      <span [ngClass]="{closed: hours.Tue=='Closed'}" item-right>{{hours.Tue}}</span>
+      <span [ngClass]="{closed: !hours.Tuesday}" item-right>{{hours.Tuesday || 'Closed'}}</span>
     </ion-item>
     <ion-item>
       <span>Wednesday</span>
-      <span [ngClass]="{closed: hours.Wed=='Closed'}" item-right>{{hours.Wed}}</span>
+      <span [ngClass]="{closed: !hours.Wednesday}" item-right>{{hours.Wednesday || 'Closed'}}</span>
     </ion-item>
     <ion-item>
       <span>Thursday</span>
-      <span [ngClass]="{closed: hours.Thu=='Closed'}" item-right>{{hours.Thu}}</span>
+      <span [ngClass]="{closed: !hours.Thursday}" item-right>{{hours.Thursday || 'Closed'}}</span>
     </ion-item>
     <ion-item>
       <span>Friday</span>
-      <span [ngClass]="{closed: hours.Fri=='Closed'}" item-right>{{hours.Fri}}</span>
+      <span [ngClass]="{closed: !hours.Friday}" item-right>{{hours.Friday || 'Closed'}}</span>
     </ion-item>
     <ion-item>
       <span>Saturday</span>
-      <span [ngClass]="{closed: hours.Sat=='Closed'}" item-right>{{hours.Sat}}</span>
+      <span [ngClass]="{closed: !hours.Saturday}" item-right>{{hours.Saturday || 'Closed'}}</span>
     </ion-item>
   </ion-list>
 </ion-content>

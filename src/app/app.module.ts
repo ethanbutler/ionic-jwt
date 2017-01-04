@@ -29,9 +29,11 @@ import { GopcAd }         from '../components/gopc-ad/gopc-ad';
 import { FixedBottom }    from '../components/fixed-bottom/fixed-bottom';
 import { GuideComponent } from '../components/guide/guide';
 import { BreweryList }    from '../components/brewery-list/brewery-list';
+import { BreweryListFull } from '../components/brewery-list-full/brewery-list-full';
 
 //pipes
 import { Removehttp }   from '../pipes/removehttp';
+import { TodaysHours }  from '../pipes/todays-hours';
 
 //providers
 import { BreweriesProvider } from '../providers/breweries';
@@ -62,8 +64,10 @@ import { User }              from '../providers/user';
     GopcAd,
     FixedBottom,
     Removehttp,
+    TodaysHours,
     GuideComponent,
-    BreweryList
+    BreweryList,
+    BreweryListFull
   ],
   imports: [
     IonicModule.forRoot(App, {tabsPlacment: 'bottom'})
@@ -91,7 +95,8 @@ import { User }              from '../providers/user';
     GopcAd,
     FixedBottom,
     GuideComponent,
-    BreweryList
+    BreweryList,
+    BreweryListFull
   ],
   providers: [
     {

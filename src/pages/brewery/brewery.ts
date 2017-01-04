@@ -2,7 +2,6 @@ import { Component, ViewChild, ViewChildren, QueryList, ElementRef } from '@angu
 import { NavController, NavParams } from 'ionic-angular';
 
 //vendor
-import * as Dateformat from 'dateformat';
 import * as GoogleMaps from 'google-maps';
 
 //pages
@@ -55,11 +54,6 @@ export class Brewery {
     this.data = navParams.get('data');
   }
 
-  getTodaysHours(){
-    let today = Dateformat('ddd');
-    return this.dummyData.hours[today];
-  }
-
   initMap(){
     this.maps.KEY = 'AIzaSyBiiqwF_VIiazs2ALkb39L7Mdjf8Xhc0xE';
     this.maps.load(google => {
@@ -90,7 +84,7 @@ export class Brewery {
 
   ngAfterViewInit(){
     this.initMap();
-    
+
     if(!this.ratingVals) return;
     this.ratingVals.forEach(ratingVal => {
       let element = ratingVal.nativeElement;
@@ -111,8 +105,8 @@ export class Brewery {
 
   openHours(){
     this.navCtrl.push(Hours, {
-      name: this.dummyData.name,
-      hours: this.dummyData.hours
+      name: this.data.name,
+      hours: this.data.breweryHours
     })
   }
 

@@ -11,6 +11,7 @@ export class Hours {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.name = navParams.get('name');
     this.hours = navParams.get('hours');
+    console.log(this.hours);
   }
 
 }
