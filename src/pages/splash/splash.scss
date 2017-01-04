@@ -3,7 +3,7 @@ page-splash {
     background-image: url('/assets/img/splash.jpg');
     background-size: cover;
   }
-  + page-tabs ion-tabs {
-    display: none!important;
+  + page-tabs .tabbar {
+    //display: none!important;
   }
 }

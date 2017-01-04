@@ -53,7 +53,6 @@ export class Brewery {
   maps: any = GoogleMaps;
   constructor(public navCtrl: NavController, public navParams: NavParams ){
     this.data = navParams.get('data');
-    this.initMap();
   }
 
   getTodaysHours(){
@@ -83,13 +82,16 @@ export class Brewery {
 
       let info = new google.maps.InfoWindow({
         position: this.map.getCenter(),
-        content: `<h4>${this.data.name}</h4><p>${this.data.breweryData.brewery_why_visit}</p>`
+        content: `<h4>${this.data.name}</h4><p>${this.data.whyVisit}</p>`
       });
       info.open(this.map);
     })
   }
 
   ngAfterViewInit(){
+    this.initMap();
+    
+    if(!this.ratingVals) return;
     this.ratingVals.forEach(ratingVal => {
       let element = ratingVal.nativeElement;
       let rating = element.dataset.rating.split('.');
