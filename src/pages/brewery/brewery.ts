@@ -74,11 +74,11 @@ export class Brewery {
         position: this.map.getCenter()
       });
 
-      let info = new google.maps.InfoWindow({
-        position: this.map.getCenter(),
-        content: `<h4>${this.data.name}</h4><p>${this.data.whyVisit}</p>`
-      });
-      info.open(this.map);
+      // let info = new google.maps.InfoWindow({
+      //   position: this.map.getCenter(),
+      //   content: `<h4>${this.data.name}</h4><p>${this.data.description}</p>`
+      // });
+      // info.open(this.map);
     })
   }
 

@@ -45,16 +45,20 @@ button.brewery-info {
   font-weight: 700;
 }
 
-#map {
-  margin: 15px 0 20px;
-  height: 30vh;
-}
-
 .rating-mask {
   display: inline-block;
   img {
     position: relative;
     z-index: 2;
+  }
+}
+
+.share-wrapper,
+.rating-wrapper {
+  h2 {
+    padding: 0 0 3px;
+    margin: 0 0 2px;
+    border-bottom: 1px solid rgba(151,151,151,.2);
   }
 }
 
@@ -82,4 +86,20 @@ button.brewery-info {
     left: 0;
     bottom: 0;
   }
+}
+
+.rating-score {
+  display: inline-block;
+  width: 2em;
+  text-align: right;
+}
+
+.map-wrapper {
+  padding: 26px 0 0;
+}
+
+
+#map {
+  margin: 17px 0 20px;
+  height: 30vh;
 }

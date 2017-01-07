@@ -8,7 +8,7 @@
     <img *ngFor="let img of dummyData.imgs" src="{{img}}" />
   </ion-scroll>
   <div padding>
-    <p>{{dummyData.description}}</p>
+    <div [innerHTML]="data.description"></div>
     <button ion-button block>Check-In</button>
     <ion-grid>
       <ion-row>
@@ -21,7 +21,7 @@
         <ion-col width-50>
           <div class="brewery-info" (click)="openWebsite(data.url)">
             <strong>Visit website</strong>
-            <small>{{data.url | removehttp}}</small>
+            <small>{{data.url || 'N/A' | removehttp}}</small>
           </div>
         </ion-col>
       </ion-row>
@@ -29,7 +29,7 @@
         <ion-col width-50>
           <div class="brewery-info"><!--TODO: figure out how to dial natively-->
             <strong>Call</strong>
-            <small>{{data.tel}}</small>
+            <small>{{data.tel || 'N/A'}}</small>
           </div>
         </ion-col>
         <ion-col width-50>
@@ -52,22 +52,24 @@
   <div class="divider">
     <gopc-ad></gopc-ad>
   </div>
-  <div>
+  <div class="map-wrapper">
     <span class="center">{{data.breweryAddress}}</span>
     <div #map id="map"></div>
   </div>
-  <div padding>
+  <div padding class="rating-wrapper">
     <h2>{{dummyData.numRatings}} Ratings</h2>
-    <ion-list>
+    <ion-list no-lines>
       <ion-item *ngFor="let rating of dummyData.ratings">
         <span item-left>{{rating.param}}</span>
         <span item-right>
           <span class="rating-mask" #ratings [attr.data-rating]="rating.value"><span *ngFor="let i of [1,2,3,4,5]" class="rating-val"><span class="rating-valInner"></span></span></span>
-          {{rating.value}}
+          <span class="rating-score">{{rating.value}}</span>
         </span>
       </ion-item>
     </ion-list>
     <button ion-button block (click)="openRating()">Rate brewery</button>
+  </div>
+  <div padding class="share-wrapper">
     <h2 class="center">Share</h2>
     <ion-grid>
       <ion-row>
@@ -79,7 +81,7 @@
         </ion-col>
         <ion-col width=33>
           <div class="brewery-info brewery-info--social">
-            <ion-icon ios="logo-twitter"></ion-icon>
+            <ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon>
             Twitter
           </div>
         </ion-col>

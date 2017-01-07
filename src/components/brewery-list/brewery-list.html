@@ -1,7 +1,9 @@
 <ion-grid *ngIf="breweries">
   <ion-row>
     <ion-col *ngFor="let brewery of data" (click)="goToBrewery(brewery.id)" width-33>
-      <img src="{{brewery.img}}" />
+      <div class="imgWrapper">
+        <img src="{{brewery.img}}" />
+      </div>
       <div class="ion-col--inner center">
         <h3>{{brewery.name}}</h3>
         <span>{{distance.getDistance(brewery.latitude, brewery.longitude)}} miles</span>
