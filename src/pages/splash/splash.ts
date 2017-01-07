@@ -15,8 +15,10 @@ import { User } from '../../providers/user';
 })
 export class Splash {
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public user: User) {}
+  tabBarElement: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public user: User) {
+    this.tabBarElement = document.querySelector('#tabs .tabbar');
+  }
 
   ionViewDidLoad(){
     this.user.isLoggedIn().then(isUserLoggedIn => {
@@ -31,13 +33,21 @@ export class Splash {
   }
 
   goToSignIn(){
-    console.log('signin');
     this.navCtrl.push(SignIn);
   }
 
   goToHome(){
-    console.log('home');
     this.navCtrl.push(Tabs);
+  }
+
+  ionViewWillEnter(){
+    if(!this.tabBarElement) return;
+    this.tabBarElement.style.display = 'none';
+  }
+
+  ionViewWillLeave(){
+    if(!this.tabBarElement) return;
+    this.tabBarElement.style.display = 'block';
   }
 
 }
