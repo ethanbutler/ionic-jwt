@@ -17,6 +17,7 @@ import { Hours }       from '../pages/hours/hours';
 import { Nearby }      from '../pages/nearby/nearby';
 import { Profile }     from '../pages/profile/profile';
 import { Rating }      from '../pages/rating/rating';
+import { Search }      from '../pages/search/search';
 import { SignIn }      from '../pages/signin/signin';
 import { SignUp }      from '../pages/signup/signup';
 import { Splash }      from '../pages/splash/splash';
@@ -25,10 +26,11 @@ import { Terms }       from '../pages/terms/terms';
 import { Top }         from '../pages/top/top';
 
 //components
-import { GopcAd }         from '../components/gopc-ad/gopc-ad';
-import { FixedBottom }    from '../components/fixed-bottom/fixed-bottom';
-import { GuideComponent } from '../components/guide/guide';
-import { BreweryList }    from '../components/brewery-list/brewery-list';
+import { AppHeader }       from '../components/app-header/app-header';
+import { GopcAd }          from '../components/gopc-ad/gopc-ad';
+import { FixedBottom }     from '../components/fixed-bottom/fixed-bottom';
+import { GuideComponent }  from '../components/guide/guide';
+import { BreweryList }     from '../components/brewery-list/brewery-list';
 import { BreweryListFull } from '../components/brewery-list-full/brewery-list-full';
 
 //pipes
@@ -55,12 +57,14 @@ import { User }              from '../providers/user';
     Nearby,
     Profile,
     Rating,
+    Search,
     SignIn,
     SignUp,
     Splash,
     Tabs,
     Terms,
     Top,
+    AppHeader,
     GopcAd,
     FixedBottom,
     Removehttp,
@@ -86,12 +90,14 @@ import { User }              from '../providers/user';
     Nearby,
     Profile,
     Rating,
+    Search,
     SignIn,
     SignUp,
     Splash,
     Tabs,
     Terms,
     Top,
+    AppHeader,
     GopcAd,
     FixedBottom,
     GuideComponent,

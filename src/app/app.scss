@@ -132,3 +132,15 @@ gopc-ad {
     width: auto;
   }
 }
+
+.imgWrapper {
+  height: 100px;
+  background: grey;
+  border: 1px solid white;
+  overflow: none;
+  img {
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+}

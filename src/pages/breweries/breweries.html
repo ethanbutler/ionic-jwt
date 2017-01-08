@@ -1,9 +1,8 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Breweries</ion-title>
-  </ion-navbar>
+  <app-header></app-header>
 </ion-header>
 <ion-content padding>
+  <h2 class="center">Breweries</h2>
   <ion-segment [(ngModel)]="show">
     <ion-segment-button value="nearby">Nearby</ion-segment-button>
     <ion-segment-button value="all">All</ion-segment-button>
