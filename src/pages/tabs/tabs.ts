@@ -7,6 +7,9 @@ import { Nearby }  from '../nearby/nearby';
 import { Guides }  from '../guides/guides';
 import { Profile } from '../profile/profile';
 
+//providers
+import { User } from '../../providers/user';
+
 @Component({
   selector: 'page-tabs',
   templateUrl: 'tabs.html'
@@ -19,6 +22,13 @@ export class Tabs {
   tab4Root: any = Guides;
   tab5Root: any = Profile;
 
-  constructor(){}
+  constructor(private user: User){}
+
+  ionViewDidEnter(){
+    let profileTab = document.querySelector('#tab-t0-4');
+    this.user.getUserInformation('avatar').then(avatarSrc => {
+      profileTab.innerHTML = `<span class="icon-avatar"><img src="${avatarSrc}" /></span>`;
+    })
+  }
 
 }

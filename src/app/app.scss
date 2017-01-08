@@ -119,3 +119,16 @@ gopc-ad {
     padding:0!important;
   }
 }
+
+.icon-avatar {
+  height: 30px;
+  border-radius: 100%;
+  overflow: hidden;
+  &[aria-selected="true"]{
+    border: 1px solid map-get($colors,dark);
+  }
+  img {
+    height: 100%;
+    width: auto;
+  }
+}

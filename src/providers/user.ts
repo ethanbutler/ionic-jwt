@@ -8,6 +8,7 @@ export class User {
   local: Storage = new Storage();
   jwtHelper: JwtHelper = new JwtHelper();
   user: any;
+  avatarSrc: string = 'assets/img/avatar.jpg'; //TODO: this will be part of user info
   constructor(){}
 
   public isLoggedIn(){
@@ -25,7 +26,10 @@ export class User {
   public getUserInformation(type?: string){
     return new Promise(resolve => {
       this.local.get('id_token').then(token => {
-        if(token && !type){
+        if(type === 'avatar' ){
+          resolve(this.avatarSrc);
+        }
+        else if(token && !type){
           resolve(this.jwtHelper.decodeToken(token) );
         } else if(token && this.jwtHelper.decodeToken(token)[type]){
           resolve(this.jwtHelper.decodeToken(token)[type]);
