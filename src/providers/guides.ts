@@ -3,15 +3,21 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class BreweriesProvider {
+export class GuidesProvider {
 
   data: Array<any> = null;
-  endpoint: string = 'http://dev.beerncapp.com:3000/api/v1/breweries/';
-  constructor(public http: Http) {}
+  endpoint: string = 'http://dev.beerncapp.com:3000/api/v1/guides/';
+  constructor(public http: Http) {
+    //dummy data
+    this.data = [
+        { id: 4, title: 'Asheville Brewery Guide', img: 'assets/img/asheville.jpg' },
+        { id: 5, title: 'Raleigh Brewery Guide', img: 'assets/img/raleigh.jpg' },
+        { id: 6, title: 'Greensboro Brewery Guide', img: 'assets/img/greensboro.jpg' }
+    ];
+  }
 
-  public getBreweries(args: any = null){
+  getGuides(args: any = null){
     if( this.data ){
-      console.log('has data');
       return Promise.resolve(this.data);
     }
     let argList = '?';

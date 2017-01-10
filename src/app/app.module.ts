@@ -40,6 +40,7 @@ import { TodaysHours }  from '../pipes/todays-hours';
 //providers
 import { BreweriesProvider } from '../providers/breweries';
 import { Distance }          from '../providers/distance';
+import { GuidesProvider }    from '../providers/guides';
 import { RatingProvider }    from '../providers/rating';
 import { User }              from '../providers/user';
 
@@ -112,6 +113,7 @@ import { User }              from '../providers/user';
     Storage,
     BreweriesProvider,
     Distance,
+    GuidesProvider,
     RatingProvider,
     User
   ]
