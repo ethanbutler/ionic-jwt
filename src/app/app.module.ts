@@ -35,11 +35,13 @@ import { BreweryListFull } from '../components/brewery-list-full/brewery-list-fu
 
 //pipes
 import { Removehttp }   from '../pipes/removehttp';
+import { SafeHtmlPipe } from '../pipes/safehtml';
 import { TodaysHours }  from '../pipes/todays-hours';
 
 //providers
 import { BreweriesProvider } from '../providers/breweries';
 import { Distance }          from '../providers/distance';
+import { GuideProvider }    from '../providers/guide';
 import { GuidesProvider }    from '../providers/guides';
 import { RatingProvider }    from '../providers/rating';
 import { User }              from '../providers/user';
@@ -69,6 +71,7 @@ import { User }              from '../providers/user';
     GopcAd,
     FixedBottom,
     Removehttp,
+    SafeHtmlPipe,
     TodaysHours,
     GuideComponent,
     BreweryList,
@@ -113,6 +116,7 @@ import { User }              from '../providers/user';
     Storage,
     BreweriesProvider,
     Distance,
+    GuideProvider,
     GuidesProvider,
     RatingProvider,
     User

@@ -12,7 +12,9 @@ export class GuideComponent {
   constructor(public navCtrl: NavController ){}
 
   goToGuide(){
-    this.navCtrl.push(Guide, this.data);
+    this.navCtrl.push(Guide, {
+      data: this.data
+    });
   }
 
 }
