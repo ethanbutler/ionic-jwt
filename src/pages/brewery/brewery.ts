@@ -52,6 +52,7 @@ export class Brewery {
   maps: any = GoogleMaps;
   constructor(public navCtrl: NavController, public navParams: NavParams ){
     this.data = navParams.get('data');
+    console.log(this.data);
   }
 
   initMap(){

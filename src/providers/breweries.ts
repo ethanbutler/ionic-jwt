@@ -11,7 +11,7 @@ export class BreweriesProvider {
 
   public getBreweries(args: any = null){
     if( this.data ){
-      console.log('has data');
+      console.log(this.data);
       return Promise.resolve(this.data);
     }
     let argList = '?';

@@ -40,6 +40,7 @@ import { TodaysHours }  from '../pipes/todays-hours';
 
 //providers
 import { BreweriesProvider } from '../providers/breweries';
+import { BreweryProvider } from '../providers/brewery';
 import { Distance }          from '../providers/distance';
 import { GuideProvider }    from '../providers/guide';
 import { GuidesProvider }    from '../providers/guides';
@@ -114,6 +115,7 @@ import { User }              from '../providers/user';
       useClass: IonicErrorHandler,
     },
     Storage,
+    BreweryProvider,
     BreweriesProvider,
     Distance,
     GuideProvider,
