@@ -1,6 +1,10 @@
 <ion-header>
   <app-header></app-header>
 </ion-header>
-<ion-content padding>
+<ion-content>
   <h2 class="center">Brewery Guides</h2>
+  <div *ngFor="let guide of guides; let i = index;" class="divider">
+    <guide [data]="guide"></guide>
+    <gopc-ad *ngIf="i % 3 == 1"></gopc-ad>
+  </div>
 </ion-content>
