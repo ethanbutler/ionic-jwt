@@ -8,6 +8,7 @@ import { App } from './app.component';
 //pages
 import { Brewery }     from '../pages/brewery/brewery';
 import { Breweries }   from '../pages/breweries/breweries';
+import { City }        from '../pages/city/city';
 import { Edit }        from '../pages/edit/edit';
 import { Feedback }    from '../pages/feedback/feedback';
 import { Guide }       from '../pages/guide/guide';
@@ -40,9 +41,10 @@ import { TodaysHours }  from '../pipes/todays-hours';
 
 //providers
 import { BreweriesProvider } from '../providers/breweries';
-import { BreweryProvider } from '../providers/brewery';
+import { BreweryProvider }   from '../providers/brewery';
 import { Distance }          from '../providers/distance';
-import { GuideProvider }    from '../providers/guide';
+import { GooglePlaces }      from '../providers/google-places';
+import { GuideProvider }     from '../providers/guide';
 import { GuidesProvider }    from '../providers/guides';
 import { RatingProvider }    from '../providers/rating';
 import { User }              from '../providers/user';
@@ -52,6 +54,7 @@ import { User }              from '../providers/user';
     App,
     Brewery,
     Breweries,
+    City,
     Edit,
     Feedback,
     Guide,
@@ -86,6 +89,7 @@ import { User }              from '../providers/user';
     App,
     Brewery,
     Breweries,
+    City,
     Edit,
     Feedback,
     Guide,
@@ -118,6 +122,7 @@ import { User }              from '../providers/user';
     BreweryProvider,
     BreweriesProvider,
     Distance,
+    GooglePlaces,
     GuideProvider,
     GuidesProvider,
     RatingProvider,

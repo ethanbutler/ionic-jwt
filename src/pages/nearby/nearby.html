@@ -2,19 +2,22 @@
   <app-header></app-header>
 </ion-header>
 <ion-content>
-  <div class="nearby-selector">
-    <ion-icon name="pin"></ion-icon>
-    <ion-select [(ngModel)]="selectedCity">
-      <ion-option *ngFor="let city of cities" value="{{city}}">{{city}}</ion-option>
-    </ion-select>
+  <div *ngIf="coords">
+    <div class="nearby-selector" (click)="openCitySelector()">
+      <ion-icon *ngIf="selectedCity" name="pin"></ion-icon>
+      {{selectedCity}}
+    </div>
+    <div class="divider">
+      <brewery-list [args]="{count:3, lat: coords.lat, lon: coords.lon}"></brewery-list>
+    </div>
+    <div class="divider">
+      <guide [data]="{id: 1, title: 'Greensboro', img: 'assets/img/greensboro.jpg'}"></guide>
+    </div>
+    <div class="divider">
+      <gopc-ad></gopc-ad>
+    </div>
   </div>
-  <div class="divider">
-    <brewery-list></brewery-list>
-  </div>
-  <div class="divider">
-    <guide [data]="{id: 1, title: 'Greensboro', img: 'assets/img/greensboro.jpg'}"></guide>
-  </div>
-  <div class="divider">
-    <gopc-ad></gopc-ad>
+  <div *ngIf="!coords" class="center" padding>
+    Calculating Location
   </div>
 </ion-content>

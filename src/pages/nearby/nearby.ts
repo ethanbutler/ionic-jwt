@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+
+//pages
+import { City } from '../city/city';
+
+//providers
+import { Distance } from '../../providers/distance';
+import { GooglePlaces } from '../../providers/google-places';
 
 @Component({
   selector: 'page-nearby',
@@ -7,16 +14,37 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class Nearby {
 
-  //TODO: this should be a GET request for all cities
-  public cities: Array<any> = [
-    'Asheville', 'Greensboro', 'Raleigh'
-  ];
-  //TODO: this should be based on geolocation, if possible
-  public selectedCity: string = 'Greensboro';
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public selectedCity: any;
+  public coords: any;
+  constructor(
+    public modalCtlr: ModalController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private distance: Distance,
+    private places: GooglePlaces) {}
 
-  ionViewDidLoad() {
-    console.log(this.cities);
+  ionViewDidLoad(){
+    this.distance.getCoords().then(coords => {
+      this.handleCoords(coords)
+    })
+  }
+
+  handleCoords(coords){
+    this.coords = coords;
+    console.log(this.coords);
+    this.places.getCityFromLatLng(coords)
+    .then(city => {
+      this.selectedCity = city;
+    })
+  }
+
+  openCitySelector(){
+    let modal = this.modalCtlr.create(City);
+    modal.onDidDismiss(city => {
+      this.selectedCity = city.name;
+      this.coords = city.coords;
+    });
+    modal.present();
   }
 
 }
