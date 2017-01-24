@@ -35,7 +35,7 @@
         <ion-col width-50>
           <div class="brewery-info" (click)="openHours()">
             <strong>Open now</strong>
-            <small>{{data.breweryHours | todayshours}}</small>
+            <small *ngIf="data.breweryHours">{{data.breweryHours | todayshours}}</small>
           </div>
         </ion-col>
       </ion-row>

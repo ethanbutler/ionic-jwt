@@ -4,6 +4,6 @@
     <h3>{{brewery.name}}</h3>
     <div>{{brewery.breweryAddress}}</div>
     <div>{{distance.getDistance(brewery.latitude, brewery.longitude)}} miles</div>
-    <div>Open today {{brewery.breweryHours | todayshours}}</div>
+    <div *ngIf="brewery.breweryHours">Open today {{brewery.breweryHours | todayshours}}</div>
   </div>
 </div>

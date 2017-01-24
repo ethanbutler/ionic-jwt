@@ -26,7 +26,11 @@ export class City {
   }
 
   handleExit(city){
-    this.viewCtrl.dismiss(city);
+    this.places.getLatLongFromCity(city)
+    .then(data => {
+      console.log(data);
+      this.viewCtrl.dismiss(data);
+    })
   }
 
 }

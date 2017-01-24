@@ -21,7 +21,7 @@ export class BreweryList {
   ngOnInit(){
     this.breweries.getBreweries(this.args)
       .then(data => {
-        this.data = data;
+        this.data = data['breweries'];
       });
   }
 

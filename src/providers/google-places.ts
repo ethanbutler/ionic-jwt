@@ -28,13 +28,27 @@ export class GooglePlaces {
   }
 
   getCitiesFromQuery(q: string){
-    //let endpoint = `${this.base}place/autocomplete/json?key=${this.key}&input=${q}&type=(cities)`;
-    let endpoint = `http://localhost:3000/api/v1/places?key=${this.key}&q=${q}&type=(cities)`;
+    let endpoint = `http://dev.beerncapp.com:3000/api/v1/cities/autocomplete?q=${q}`;
     return new Promise(resolve => {
       this.http.get(endpoint)
       .map(res => res.json())
       .subscribe(data => {
         resolve(data);
+      });
+    });
+  }
+
+  getLatLongFromCity(city: any){
+    let endpoint = `http://dev.beerncapp.com:3000/api/v1/cities/geocode?place=${city.placeId}`;
+    return new Promise(resolve => {
+      this.http.get(endpoint)
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data)
+        resolve({
+          name: city.name,
+          coords: data.result.geometry.location
+        });
       })
     });
   }

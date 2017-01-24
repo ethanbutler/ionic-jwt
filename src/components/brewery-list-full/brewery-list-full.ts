@@ -21,8 +21,8 @@ export class BreweryListFull{
     ngOnInit(){
       this.breweries.getBreweries(this.args)
         .then(data => {
-          console.log(data);
-          this.data = data;
+          console.log(data)
+          this.data = data['breweries'];
         });
     }
 
