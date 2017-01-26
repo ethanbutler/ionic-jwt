@@ -2,8 +2,6 @@ import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers } from '@angular/http';
-import { Storage } from '@ionic/storage';
-import { JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 //pages

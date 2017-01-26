@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
 
 //pages
 import { Guides  } from '../guides/guides';

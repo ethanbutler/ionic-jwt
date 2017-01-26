@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Http, Headers } from '@angular/http';
-import { Storage } from '@ionic/storage';
-import { JwtHelper } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 //pages
@@ -55,7 +53,6 @@ export class SignUp {
   }
 
   afterSignup(data, cb?: Function){
-    console.log('after signup');
     let credentials = {
       email: data.user.email,
       password: this.credentials.value.password
