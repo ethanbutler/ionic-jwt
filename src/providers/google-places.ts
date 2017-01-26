@@ -44,7 +44,6 @@ export class GooglePlaces {
       this.http.get(endpoint)
       .map(res => res.json())
       .subscribe(data => {
-        console.log(data)
         resolve({
           name: city.name,
           coords: data.result.geometry.location
