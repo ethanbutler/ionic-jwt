@@ -33,7 +33,7 @@ describe('Breweries Provider', () => {
     });
   });
 
-  it('should return correct number of objects', () => {
+  it('should get correct number of objects', () => {
     return breweriesProvider.getBreweries({
       count: 3
     }).then(results => {
@@ -42,7 +42,7 @@ describe('Breweries Provider', () => {
     });
   });
 
-  it('should return recently published breweries by default', () => {
+  it('should get recently published breweries by default', () => {
     const sortByDate = (b, a) => {
       if(a.createdAt < b.createdAt) return -1;
       if(a.createdAt > b.createdAt) return 1;
@@ -56,7 +56,7 @@ describe('Breweries Provider', () => {
     });
   });
 
-  it('should return breweries alphabetically', () => {
+  it('should get breweries alphabetically', () => {
     const sortByName = (a, b) => {
       if(a.name < b.name) return -1;
       if(a.name > b.name) return 1;
@@ -64,8 +64,8 @@ describe('Breweries Provider', () => {
     };
 
     return breweriesProvider.getBreweries({
-      orderby: 'title',
-      order: 'asc'
+      orderby: 'name',
+      order: 'ASC'
     }).then(results => {
       let unsorted = results.breweries.slice();
       let sorted   = results.breweries.sort(sortByName);
@@ -73,17 +73,17 @@ describe('Breweries Provider', () => {
     });
   });
 
-  it('should return breweries by nearest', () => {
+  it('should get breweries by nearest', () => {
     const sortByDistance = (a, b) => {
       const dummyCoords = {
         lat: 35.9940,
-        long: -78.8986
+        lon: -78.8986
       };
       const getDistance = (lat, lng) => {
-        return Geodist({lat: lat, lng: lng}, dummyCoords, {exact: true}).toFixed(1);
+        return Geodist({lat: lat, lon: lng}, dummyCoords, {exact: true}).toFixed(1);
       };
-      const aDistance = getDistance(a);
-      const bDistance = getDistance(b);
+      const aDistance = getDistance(a.latitude, a.longitude);
+      const bDistance = getDistance(b.latitude, b.longitude);
       if(aDistance < bDistance) return -1;
       if(aDistance > bDistance) return 1;
       return 0;
