@@ -9,7 +9,7 @@ import * as Geodist from 'geodist';
 export class Distance {
 
   //lng/lon confusion due to Geodist :(
-  currentPos: { lat: number, lon: number } = null;
+  currentPos: { lat: number, lng: number } = null;
   constructor() {
     this.getCoords();
   }
@@ -18,7 +18,7 @@ export class Distance {
     return new Promise(resolve=>{
       Geolocation.getCurrentPosition()
         .then(pos => {
-          this.currentPos = { lat: pos.coords.latitude, lon: pos.coords.longitude }
+          this.currentPos = { lat: pos.coords.latitude, lng: pos.coords.longitude }
           if(!type) resolve(this.currentPos);
           resolve(this.currentPos[type]);
         }).catch(err => {
@@ -28,7 +28,11 @@ export class Distance {
   }
 
   getDistance(lat, lng){
-    return Geodist({lat: lat, lon: lng}, this.currentPos, {exact: true}).toFixed(1);
+    let pos = this.currentPos ? {
+      lat: this.currentPos.lat,
+      lon: this.currentPos.lng
+    } : null;
+    return Geodist({lat: lat, lon: lng}, pos, {exact: true}).toFixed(1);
   }
 
 }
