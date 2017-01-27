@@ -18,10 +18,10 @@ describe('Google Places Provider', () => {
     googlePlaces = new GooglePlaces(http);
   });
 
-  it('should return city from lat/lon object', () => {
+  it('should return city from lat/lng object', () => {
     return googlePlaces.getCityFromLatLng({
       lat: 35.9940,
-      lon: -78.8986
+      lng: -78.8986
     }).then(city => {
       expect(typeof city).toBe('string');
     })

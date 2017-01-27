@@ -9,16 +9,18 @@ export class BreweriesProvider {
   endpoint: string = 'http://dev.beerncapp.com:3000/api/v1/breweries/';
   constructor(public http: Http) {}
 
-  public getBreweries(args: any = null){
-    if( this.data ){
-      return Promise.resolve(this.data);
-    }
+  public constructArgsList(args: any = null){
     let argList = '?';
     for( let arg in args ){
       if(args.hasOwnProperty(arg)){
         argList += arg + '=' + args[arg] + '&'
       }
     }
+    return argList;
+  }
+
+  public getBreweries(args: any = null){
+    let argList = this.constructArgsList(args);
     return new Promise(resolve => {
       this.http.get(this.endpoint + argList)
         .map(res => res.json() )
