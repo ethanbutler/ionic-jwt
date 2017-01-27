@@ -25,6 +25,7 @@ export class Nearby {
 
   ionViewDidLoad(){
     this.distance.getCoords().then(coords => {
+      console.log(coords);
       this.handleCoords(coords)
     })
   }

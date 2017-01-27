@@ -10,7 +10,7 @@ export class GooglePlaces {
   constructor(public http: Http) {}
 
   getCityFromLatLng(coords: any){
-    let endpoint = `${this.base}geocode/json?key=${this.key}&latlng=${coords.lat},${coords.lng}`;
+    let endpoint = `${this.base}geocode/json?key=${this.key}&latlng=${coords.lat},${coords.lon}`;
     return new Promise(resolve => {
       this.http.get(endpoint)
       .map(res => res.json())

@@ -8,6 +8,7 @@ import * as Geodist from 'geodist';
 @Injectable()
 export class Distance {
 
+  //lng/lon confusion due to Geodist :(
   currentPos: { lat: number, lon: number } = null;
   constructor() {
     this.getCoords();
@@ -26,8 +27,8 @@ export class Distance {
     })
   }
 
-  getDistance(lat, lon){
-    return Geodist({lat: lat, lon: lon}, this.currentPos, {exact: true}).toFixed(1);
+  getDistance(lat, lng){
+    return Geodist({lat: lat, lon: lng}, this.currentPos, {exact: true}).toFixed(1);
   }
 
 }
