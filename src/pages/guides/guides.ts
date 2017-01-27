@@ -15,8 +15,8 @@ export class Guides {
 
   guides: Array<any> = null;
   constructor(public navCtrl: NavController, public navParams: NavParams, private guidesProvider: GuidesProvider) {
-    guidesProvider.getGuides().then(guides => {
-      this.guides = guides;
+    guidesProvider.getGuides().then(results => {
+      this.guides = results['guides'];
     })
   }
 

@@ -14,12 +14,16 @@ import { Brewery } from '../brewery/brewery';
 })
 export class Guide {
 
-  public data: any = null;
-  public content: string = '';
+  public data:       any = null;
+  public title:      string = '';
+  public featureImg: string = '';
+  public content:    string = '';
   constructor(public navCtrl: NavController, public navParams: NavParams, public guideProvider: GuideProvider, public breweryProvider: BreweryProvider ) {
     this.data = navParams.get('data');
     this.guideProvider.getGuide(this.data.id).then(data => {
-      this.content = data.content;
+      this.title      = data['title'];
+      this.featureImg = data['featureImg'];
+      this.content    = data['content'];
     });
   }
 
