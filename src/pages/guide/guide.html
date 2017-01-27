@@ -3,6 +3,8 @@
     <ion-title>{{data.title}}</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  <div *ngIf="content" (click)="handleContentClick($event)" [innerHTML]="content | safeHtml"></div>
+<ion-content>
+  <img src="{{data.featureImg}}" />
+  <h2 class="center">{{data.title}}</h2>
+  <div *ngIf="data.content" (click)="handleContentClick($event)" [innerHTML]="data.content | safeHtml" padding></div>
 </ion-content>
