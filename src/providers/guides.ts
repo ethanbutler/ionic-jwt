@@ -20,9 +20,6 @@ export class GuidesProvider {
   }
 
   getGuides(args: any = null){
-    if( this.data ){
-      return Promise.resolve(this.data);
-    }
     let argList = this.constructArgsList(args);
     return new Promise(resolve => {
       this.http.get(this.endpoint + argList)

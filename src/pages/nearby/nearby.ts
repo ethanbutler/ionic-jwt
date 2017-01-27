@@ -5,8 +5,9 @@ import { ModalController, NavController, NavParams } from 'ionic-angular';
 import { City } from '../city/city';
 
 //providers
-import { Distance } from '../../providers/distance';
-import { GooglePlaces } from '../../providers/google-places';
+import { Distance }       from '../../providers/distance';
+import { GooglePlaces }   from '../../providers/google-places';
+import { GuidesProvider } from '../../providers/guides';
 
 @Component({
   selector: 'page-nearby',
@@ -14,29 +15,39 @@ import { GooglePlaces } from '../../providers/google-places';
 })
 export class Nearby {
 
-  public selectedCity: any;
-  public coords: any;
+  public selectedCity: any = null;
+  public coords:       any = null;
+  public guides:       any = null;
   constructor(
     public modalCtlr: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
     private distance: Distance,
+    private guidesProvider: GuidesProvider,
     private places: GooglePlaces) {}
 
   ionViewDidLoad(){
     this.distance.getCoords().then(coords => {
-      console.log(coords);
       this.handleCoords(coords)
     })
   }
 
-  handleCoords(coords){
+  handleCoords(coords: any){
     this.coords = coords;
-    console.log(this.coords);
     this.places.getCityFromLatLng(coords)
     .then(city => {
       this.selectedCity = city;
+      this.getRelevantGuides(this.selectedCity);
     })
+  }
+
+  getRelevantGuides(q: string = null){
+    console.log('grg')
+    this.guidesProvider.getGuides({
+      q: q
+    }).then(results => {
+      this.guides = results['guides'];
+    });
   }
 
   openCitySelector(){

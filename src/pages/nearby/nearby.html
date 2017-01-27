@@ -10,8 +10,8 @@
     <div class="divider">
       <brewery-list [args]="{count:3, lat: coords.lat, lng: coords.lon}"></brewery-list>
     </div>
-    <div class="divider">
-      <guide [data]="{id: 1, title: 'Greensboro', img: 'assets/img/greensboro.jpg'}"></guide>
+    <div *ngIf="guides" class="divider">
+      <guide *ngFor="let guide of guides" [data]="guide"></guide>
     </div>
     <div class="divider">
       <gopc-ad></gopc-ad>
