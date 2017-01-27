@@ -31,6 +31,7 @@ import { AppHeader }       from '../components/app-header/app-header';
 import { GopcAd }          from '../components/gopc-ad/gopc-ad';
 import { FixedBottom }     from '../components/fixed-bottom/fixed-bottom';
 import { GuideComponent }  from '../components/guide/guide';
+import { GuideList }       from '../components/guide-list/guide-list';
 import { BreweryList }     from '../components/brewery-list/brewery-list';
 import { BreweryListFull } from '../components/brewery-list-full/brewery-list-full';
 
@@ -78,6 +79,7 @@ import { User }              from '../providers/user';
     SafeHtmlPipe,
     TodaysHours,
     GuideComponent,
+    GuideList,
     BreweryList,
     BreweryListFull
   ],
@@ -110,6 +112,7 @@ import { User }              from '../providers/user';
     GopcAd,
     FixedBottom,
     GuideComponent,
+    GuideList,
     BreweryList,
     BreweryListFull
   ],

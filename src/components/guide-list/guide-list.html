@@ -1,0 +1,12 @@
+<ion-grid *ngIf="data">
+  <ion-row>
+    <ion-col *ngFor="let guide of data" (click)="goToGuide(guide.id)" width-33>
+      <div class="imgWrapper">
+        <img src="{{guide.featureImg}}" />
+      </div>
+      <div class="ion-col--inner center">
+        <h3>{{guide.title}}</h3>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

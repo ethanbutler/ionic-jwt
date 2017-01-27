@@ -12,16 +12,7 @@
   </div>
   <div class="divider" *ngIf="guides">
     <h2 class="center">Brewery Guides</h2>
-    <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let guide of guides" width-33>
-          <div class="imgWrapper">
-            <img src="{{guide.img}}" />
-          </div>
-          <h3 class="center">{{guide.name}}</h3>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <guide-list [args]="{count:3}"></guide-list>
     <a block class="center link link--large" (click)="goToGuides($event)">Browse All Guides</a>
   </div>
   <div class="divider">
