@@ -31,6 +31,16 @@ describe('Guides Provider', () => {
     });
   });
 
+  //implement when more guides are published
+  xit('should return the correct number of guides', () => {
+    return guidesProvider.getGuides({
+      count: 3
+    }).then(results => {
+      let guides = results.guides
+      expect(guides.length).toBe(3);
+    });
+  });
+
   it('should get recently published guides', () => {
     const sortByDate = (b, a) => {
       if(a.createdAt < b.createdAt) return -1;
