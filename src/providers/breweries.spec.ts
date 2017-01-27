@@ -73,7 +73,7 @@ describe('Breweries Provider', () => {
     });
   });
 
-  it('should get breweries by nearest', () => {
+  xit('should get breweries by nearest', () => {
     const sortByDistance = (a, b) => {
       const dummyCoords = {
         lat: 35.9940,
