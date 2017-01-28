@@ -28,6 +28,7 @@ import { Top }         from '../pages/top/top';
 
 //components
 import { AppHeader }       from '../components/app-header/app-header';
+import { AvatarUpload }    from '../components/avatar-upload/avatar-upload';
 import { GopcAd }          from '../components/gopc-ad/gopc-ad';
 import { FixedBottom }     from '../components/fixed-bottom/fixed-bottom';
 import { GuideComponent }  from '../components/guide/guide';
@@ -74,6 +75,7 @@ import { User }              from '../providers/user';
     Terms,
     Top,
     AppHeader,
+    AvatarUpload,
     GopcAd,
     FixedBottom,
     CleanEntities,
@@ -111,6 +113,7 @@ import { User }              from '../providers/user';
     Terms,
     Top,
     AppHeader,
+    AvatarUpload,
     GopcAd,
     FixedBottom,
     GuideComponent,

@@ -1,0 +1,9 @@
+<div *ngIf="lastImage">
+  <img src="{{pathForImage(lastImage)}}" />
+</div>
+<button ion-button (click)="presentActionSheet()">
+  Select Image
+</button>
+<button ion-button (click)="uploadImage()" [disabled]="!lastImage">
+  Upload
+</button>
