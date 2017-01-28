@@ -23,6 +23,14 @@ export class User {
     });
   }
 
+  public getToken(){
+    return new Promise(resolve => {
+      this.local.get('id_token').then(token => {
+        resolve(token);
+      });
+    })
+  }
+
   public getUserInformation(type?: string){
     return new Promise(resolve => {
       this.local.get('id_token').then(token => {

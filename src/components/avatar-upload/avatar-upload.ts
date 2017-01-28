@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Headers } from '@angular/http';
+import { AuthHttp, AuthConfig, IAuthConfig } from 'angular2-jwt';
 import { NavController, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
-import { Camera, File, FilePath } from 'ionic-native';
+import { Camera, File as _File, FilePath } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
 declare var cordova: any;
@@ -12,15 +13,14 @@ declare var cordova: any;
 })
 export class AvatarUpload {
 
-  contentHeader: Headers = new Headers({
-    "Content-Type": "multipart/form-data"
-  });
-  endpoint:      string = 'http://dev.beerncapp.com/api/v1/users/avatar';
-  error:         string = null;
-  lastImage:     string = null;
-  loading:       any = null;
+  contentHeaders: Headers = new Headers({'content-type': 'multipart/form-data'});
+  endpoint:       string = 'http://dev.beerncapp.com:3000/api/v1/users/avatar';
+  //endpoint:       string = 'http://192.168.1.140:3000/test';
+  error:          string = null;
+  lastImage:      string = null;
+  loading:        any = null;
   constructor(
-    public http: Http,
+    public authHttp: AuthHttp,
     public navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
     public toastCtrl: ToastController,
@@ -95,7 +95,7 @@ export class AvatarUpload {
   }
 
   private copyFileToLocalDir(namePath, currentName, newFileName){
-    File.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
+    _File.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.lastImage = newFileName;
     }, (err) => {
       this.presentToast('Error while storing file.');
@@ -121,20 +121,26 @@ export class AvatarUpload {
 
   public uploadImage(){
     let targetPath = this.pathForImage(this.lastImage);
-    let filename = this.lastImage;
+    let fileName = this.lastImage;
     let body = new FormData();
-    let options = {};
-
+    let file = new File([''], targetPath);
+    body.append('avatar', file, fileName);
+    console.log(body);
     this.loading = this.loadingCtrl.create({
       content: 'Uploading...'
     });
-
     return new Promise(resolve => {
-      this.http.post(this.endpoint, body, options)
-      .map(res => res.json())
+      this.authHttp.post(this.endpoint, body, null)
+      .map(res => {
+        console.log(res);
+        return res => res.json();
+      })
       .subscribe(data => {
+        console.log(data);
         this.loading.dismissAll();
         resolve(data);
+      }, err => {
+        console.log(err);
       })
     });
   }

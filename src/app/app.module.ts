@@ -52,6 +52,16 @@ import { GuidesProvider }    from '../providers/guides';
 import { RatingProvider }    from '../providers/rating';
 import { User }              from '../providers/user';
 
+//factories
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { Http, RequestOptions}  from '@angular/http';
+export function authHttpServiceFactory(http: Http, options: RequestOptions){
+  let storage = new Storage();
+  return new AuthHttp(new AuthConfig({
+    tokenGetter: (() => storage.get('id_token'))
+  }), http, options)
+}
+
 @NgModule({
   declarations: [
     App,
@@ -134,7 +144,12 @@ import { User }              from '../providers/user';
     GuideProvider,
     GuidesProvider,
     RatingProvider,
-    User
+    User,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    }
   ]
 })
 export class AppModule {}
