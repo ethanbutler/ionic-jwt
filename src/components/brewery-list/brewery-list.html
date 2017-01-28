@@ -5,7 +5,7 @@
         <img src="{{brewery.img}}" />
       </div>
       <div class="ion-col--inner center">
-        <h3>{{brewery.name}}</h3>
+        <h3>{{brewery.name | cleanentities}}</h3>
         <span>{{distance.getDistance(brewery.latitude, brewery.longitude)}} miles</span>
       </div>
     </ion-col>

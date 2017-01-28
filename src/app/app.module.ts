@@ -36,9 +36,10 @@ import { BreweryList }     from '../components/brewery-list/brewery-list';
 import { BreweryListFull } from '../components/brewery-list-full/brewery-list-full';
 
 //pipes
-import { Removehttp }   from '../pipes/removehttp';
-import { SafeHtmlPipe } from '../pipes/safehtml';
-import { TodaysHours }  from '../pipes/todays-hours';
+import { CleanEntities } from '../pipes/clean-entities';
+import { Removehttp }    from '../pipes/removehttp';
+import { SafeHtmlPipe }  from '../pipes/safehtml';
+import { TodaysHours }   from '../pipes/todays-hours';
 
 //providers
 import { BreweriesProvider } from '../providers/breweries';
@@ -75,6 +76,7 @@ import { User }              from '../providers/user';
     AppHeader,
     GopcAd,
     FixedBottom,
+    CleanEntities,
     Removehttp,
     SafeHtmlPipe,
     TodaysHours,
