@@ -119,29 +119,42 @@ export class AvatarUpload {
     }
   }
 
+  public getImageBlob(targetPath){
+    return new Promise(resolve =>{
+      //http://qnimate.com/javascript-create-file-object-from-url/
+      let xhr = new XMLHttpRequest();
+      xhr.open('GET', targetPath);
+      xhr.responseType = 'blob';
+      xhr.onload = () => {
+        resolve(xhr.response);
+      };
+      xhr.send();
+    })
+  }
+
   public uploadImage(){
     let targetPath = this.pathForImage(this.lastImage);
     let fileName = this.lastImage;
-    let body = new FormData();
-    let file = new File([''], targetPath);
-    body.append('avatar', file, fileName);
-    console.log(body);
+
     this.loading = this.loadingCtrl.create({
       content: 'Uploading...'
     });
-    return new Promise(resolve => {
-      this.authHttp.post(this.endpoint, body, null)
+
+    this.getImageBlob(targetPath).then(blob => {
+      console.log(blob);
+      let body = new FormData();
+      body.append('avatar', blob);
+      this.authHttp.post(this.endpoint, body)
       .map(res => {
         console.log(res);
         return res => res.json();
       })
       .subscribe(data => {
-        console.log(data);
         this.loading.dismissAll();
-        resolve(data);
+        console.log(data);
       }, err => {
         console.log(err);
-      })
+      });
     });
   }
 
