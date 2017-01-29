@@ -2,21 +2,20 @@
   <app-header></app-header>
 </ion-header>
 <ion-content padding>
-  <div class="divider">
+  <div class="divider user-info">
     <div class="icon-avatar">
       <img src="{{userInfo.avatar}}" />
     </div>
-    <div class="profile-name">
+    <div *ngIf="userInfo.name || userInfo.username" class="profile-name">
       <strong>{{userInfo.name}}</strong>
       <small>{{userInfo.username}}</small>
     </div>
+    <button class="btn-primary" block ion-button (click)="goToSettings()">Edit settings</button>
   </div>
+  <button class="btn-light" block ion-button (click)="goToTerms()">Terms &amp; conditions</button>
+  <button class="btn-light" block ion-button (click)="goToPrivacy()">Privacy Policy</button>
   <div class="divider">
-    <button block ion-button (click)="goToSettings()">Edit settings</button>
-    <button block ion-button (click)="goToTerms()">Terms &amp; conditions</button>
-  </div>
-  <div class="divider">
-    <button block ion-button (click)="goToFeedback()">Feedback and support</button>
-    <button block ion-button (click)="logOut()">Log out</button><!-- TODO: add logout provider -->
+    <a class="link" (click)="goToFeedback()">Feedback and support</a>
+    <a class="link" (click)="logOut()">Log out</a>
   </div>
 </ion-content>

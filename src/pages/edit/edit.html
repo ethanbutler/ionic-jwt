@@ -22,27 +22,27 @@
   <p *ngIf="err">{{err}}</p>
   <ion-list>
     <ion-item>
-      <ion-label floating>Name</ion-label>
+      <ion-label>Name</ion-label>
       <ion-input type="text" value="{{credentials.name}}" [ngModel]="name" (ngModelChange)="onChange($event, 'name')"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Username</ion-label>
+      <ion-label>Username</ion-label>
       <ion-input type="text" value={{credentials.username}} [ngModel]="username" (ngModelChange)="onChange($event, 'username')"></ion-input>
     </ion-item>
   </ion-list>
   <h2>Private information</h2>
   <ion-list>
     <ion-item>
-      <ion-label floating>Email</ion-label>
+      <ion-label>Email</ion-label>
       <ion-input type="email" value="{{credentials.email}}" [ngModel]="email" (ngModelChange)="onChange($event, 'email')"></ion-input>
     </ion-item>
     <p *ngIf="!doPasswordsMatch">Passwords do not match.</p>
     <ion-item>
-      <ion-label floating>Change Password</ion-label>
+      <ion-label>Change Password</ion-label>
       <ion-input type="password" [ngModel]="passwordOriginal" (ngModelChange)="onPasswordChange($event, 'original')"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating>Confirm Password</ion-label>
+      <ion-label>Confirm Password</ion-label>
       <ion-input type="password" [ngModel]="passwordConfirmation" (ngModelChange)="onPasswordChange($event, 'confirmation')"></ion-input>
     </ion-item>
   </ion-list>

@@ -1,8 +1,59 @@
 page-profile {
 
+  .user-info {
+    text-align: center;
+    padding: 28px 0;
+    border-top: none;
+  }
+
   .icon-avatar {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
+    margin: 0 16px 28px 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .profile-name {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 28px;
+    strong,
+    small {
+      display: block;
+      font-size: 14px;
+    }
+  }
+
+  .button {
+    font-weight: 500px;
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    background: map-get($colors, dark);
+  }
+
+  .btn-light {
+    background: map-get($colors, white);
+    color: map-get($colors, dark);
+    border: 1px solid rgba(map-get($colors, medium), .5);
+    margin: 5px 0 0;
+    text-transform: uppercase;
+    &:first-of-type {
+      margin: 37px 0 0;
+    }
+    &:last-of-type {
+      margin: 5px 0 30px;
+    }
+  }
+
+  .link {
+    display: block;
+    margin: 27px 0 0;
+    color: #23221E;
+    text-transform: none;
+    font-weight: 500;
   }
 
 }

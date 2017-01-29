@@ -1,7 +1,44 @@
 page-edit {
 
-  ion-navbar button {
+  ion-navbar .button {
+    background: map-get($colors, dark);
     float: right;
+  }
+
+  .list .item-block .item-inner {
+    border-bottom: none;
+  }
+
+  .list > .item-block:first-child {
+    border-top: none;
+  }
+
+  .list > .item-block:last-child {
+    border-bottom: none;
+  }
+
+  .input-wrapper,
+  .label,
+  .input {
+    display: block;
+    width: 100%;
+  }
+
+  .label {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 2px;
+  }
+
+  .input {
+    border: 1px solid rgba(map-get($colors, medium), .3);
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0 0 20px;
+  }
+
+  .input-has-focus .input {
+    border: 1px solid map-get($colors, medium);
   }
 
 }
