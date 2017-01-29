@@ -36,10 +36,10 @@ export class Edit {
     public user:        User,
     public distance:    Distance
   ) {
-    this.user.getUserInformation().then(token => {
-      this.credentials.name      = token['name'] || 'Add Name';
-      this.credentials.username  = token['username'] || 'Add Username';
-      this.credentials.email     = token['email'] || 'Add Email';
+    this.user.getUserInfo().then(info => {
+      this.credentials.name      = info['name'] || 'Add Name';
+      this.credentials.username  = info['username'] || 'Add Username';
+      this.credentials.email     = info['email'] || 'Add Email';
     });
     this.distance.getCoords().then(coords => {
       this.credentials.latitude  = coords['lat'];
