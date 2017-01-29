@@ -44,8 +44,8 @@ describe('Breweries Provider', () => {
 
   it('should get recently published breweries by default', () => {
     const sortByDate = (b, a) => {
-      if(a.createdAt < b.createdAt) return -1;
-      if(a.createdAt > b.createdAt) return 1;
+      if(a.updatedAt < b.updatedAt) return -1;
+      if(a.updatedAt > b.updatedAt) return 1;
       return 0;
     };
 

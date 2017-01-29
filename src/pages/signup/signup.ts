@@ -42,7 +42,6 @@ export class SignUp {
       data => {
         this.afterSignup(data, token => {
           this.user.login(token, () =>{
-            console.log('aftersignup cb');
             this.error = null;
             this.navCtrl.push(Tabs);
           })
@@ -62,12 +61,8 @@ export class SignUp {
     })
     .map(res => res.json())
     .subscribe(
-      data => {
-        if(cb) cb(data)
-      },
-      err => {
-        this.error = err._body
-      }
+      data => { if(cb) cb(data) },
+      err => { this.error = err._body }
     )
   }
 

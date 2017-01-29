@@ -28,14 +28,6 @@ export class AvatarUpload {
     public loadingCtrl: LoadingController
   ){}
 
-  onSuccess(res){
-    console.log(res);
-  }
-
-  onFailure(err){
-
-  }
-
   // https://devdactic.com/ionic-2-images/
   public presentActionSheet(){
     let actionSheet = this.actionSheetCtrl.create({
@@ -141,21 +133,29 @@ export class AvatarUpload {
     });
 
     this.getImageBlob(targetPath).then(blob => {
-      console.log(blob);
+      //console.log(blob);
       let body = new FormData();
       body.append('avatar', blob);
-      this.authHttp.post(this.endpoint, body)
+      this.authHttp.put(this.endpoint, body)
       .map(res => {
-        console.log(res);
+        //console.log(res);
         return res => res.json();
       })
       .subscribe(data => {
         this.loading.dismissAll();
-        console.log(data);
+        //console.log(data);
       }, err => {
         console.log(err);
       });
     });
+  }
+
+  private onSuccess(res){
+    console.log(res);
+  }
+
+  private onFailure(err){
+    console.log(err);
   }
 
 }
