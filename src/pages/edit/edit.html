@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Edit profile</ion-title>
-    <button ion-button>Save</button><!-- TODO: add POST functionality -->
+    <button ion-button [disabled]="!doPasswordsMatch" (click)="onSubmit($event)">Save</button><!-- TODO: add POST functionality -->
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -21,27 +21,27 @@
   <ion-list>
     <ion-item>
       <ion-label floating>Name</ion-label>
-      <ion-input type="text" value="{{credentials.name}}"></ion-input>
+      <ion-input type="text" value="{{credentials.name}}" [ngModel]="name" (ngModelChange)="onChange($event, 'name')"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input type="text" value={{credentials.username}}></ion-input>
+      <ion-input type="text" value={{credentials.username}} [ngModel]="username" (ngModelChange)="onChange($event, 'username')"></ion-input>
     </ion-item>
   </ion-list>
   <h2>Private information</h2>
   <ion-list>
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="email" value="{{credentials.email}}"></ion-input>
+      <ion-input type="email" value="{{credentials.email}}" [ngModel]="email" (ngModelChange)="onChange($event, 'email')"></ion-input>
     </ion-item>
     <p *ngIf="!doPasswordsMatch">Passwords do not match.</p>
     <ion-item>
       <ion-label floating>Change Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [ngModel]="passwordOriginal" (ngModelChange)="onPasswordChange($event, 'original')"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Confirm Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [ngModel]="passwordConfirmation" (ngModelChange)="onPasswordChange($event, 'confirmation')"></ion-input>
     </ion-item>
   </ion-list>
 </ion-content>

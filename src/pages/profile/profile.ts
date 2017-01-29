@@ -21,10 +21,10 @@ export class Profile {
     avatar: "assets/img/avatar.jpg"
   }
   constructor(public navCtrl: NavController, public navParams: NavParams, private user: User) {
-    this.user.getUserInformation()
-      .then(data => {
-        console.log(data);
-      })
+    this.user.getUserInfo()
+    .then(data => {
+      console.log(data);
+    })
   }
 
   goToSettings(){

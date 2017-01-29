@@ -47,7 +47,10 @@ export class SignUp {
           })
         });
       },
-      err => { this.error = err._body }
+      err => {
+        this.error = err._body
+        console.log(err)
+      }
     )
   }
 
@@ -62,7 +65,10 @@ export class SignUp {
     .map(res => res.json())
     .subscribe(
       data => { if(cb) cb(data) },
-      err => { this.error = err._body }
+      err => {
+        this.error = err._body
+        console.log(err)
+      }
     )
   }
 

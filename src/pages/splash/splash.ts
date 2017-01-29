@@ -47,7 +47,7 @@ export class Splash {
 
   ionViewWillLeave(){
     if(!this.tabBarElement) return;
-    this.tabBarElement.style.display = 'block';
+    this.tabBarElement.style.display = 'flex';
   }
 
 }

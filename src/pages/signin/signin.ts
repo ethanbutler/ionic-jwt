@@ -22,7 +22,12 @@ export class SignIn {
   contentHeader: Headers = new Headers({"Content-Type": "application/json"});
   error: string;
   authType: string;
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private http: Http, private user: User) {
+  constructor(
+    public navCtrl: NavController,
+    private formBuilder: FormBuilder,
+    private http: Http,
+    private user: User
+  ) {
     this.authType = 'login';
     this.credentials = this.formBuilder.group({
       email: ['', Validators.required],
@@ -38,7 +43,7 @@ export class SignIn {
     })
     .map(res => res.json())
     .subscribe(
-      data => this.user.login(data, () =>{
+      data => this.user.login(data, (token) => {
         this.error = null;
         this.navCtrl.push(Tabs);
       }),

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Headers } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { AuthHttp, JwtHelper }from 'angular2-jwt';
 
 @Injectable()
@@ -12,7 +12,10 @@ export class User {
   jwtHelper: JwtHelper = new JwtHelper();
   user:      any;
   avatarSrc: string = 'assets/img/avatar.jpg'; //TODO: this will be part of user info
-  constructor(public authHttp: AuthHttp){}
+  constructor(
+    public authHttp: AuthHttp,
+    public http: Http
+  ){}
 
   public isLoggedIn(){
     return new Promise(resolve => {
@@ -22,6 +25,27 @@ export class User {
     });
   }
 
+  public getToken(){
+    return this.local.get('id_token');
+  }
+
+  public getUserInfo(id?: number, type?: string){
+    return new Promise(resolve => {
+      this.getToken().then(token => {
+        let _token = this.jwtHelper.decodeToken(token);
+        let userId = id || _token.id;
+        this.authHttp.get(this.endpoint + userId, {
+          headers: this.contentHeaders
+        })
+        .map(res => res.json())
+        .subscribe(data => {
+          resolve(type ? data.user[type] : data.user)
+        })
+      });
+    });
+  }
+
+  //deprecate
   public getUserInformation(type?: string){
     return new Promise(resolve => {
       this.local.get('id_token').then(token => {
@@ -54,18 +78,15 @@ export class User {
     if(cb) cb();
   }
 
-  public update(userInfo: any, cb?: Function){
+  public update(userInfo: any){
     return new Promise(resolve => {
-      this.getUserInformation().then(token => {
-        let newInfo = {};
-        this.authHttp.post(this.endpoint, JSON.stringify(newInfo), {
-          headers: this.contentHeaders
-        }).map(res => res.json())
-        .subscribe(token => {
-          this.login(token, cb);
-        }, err => {
-          console.log(err);
-        });
+      this.authHttp.put(this.endpoint, JSON.stringify(userInfo), {
+        headers: this.contentHeaders
+      }).map(res => res.json())
+      .subscribe(token => {
+        resolve(token);
+      }, err => {
+        console.log(err);
       });
     });
   }

@@ -11,11 +11,18 @@ import { Distance } from '../../providers/distance';
 })
 export class Edit {
 
+  name:                 string = null;
+  username:             string = null;
+  email:                string = null;
+  passwordOriginal:     string = null;
+  passwordConfirmation: string = null;
   credentials: any = {
     name: null,
     username: null,
     email: null,
-    password: null
+    password: null,
+    latitude: null,
+    longitude: null
   };
   password: any = {
     original: null,
@@ -59,8 +66,20 @@ export class Edit {
     }
   }
 
+  private cleanCredentials(credentials: any){
+    let properties = ['name', 'username', 'emai', 'password', 'latitude', 'longitude'];
+    for(let property of properties){
+      if(!credentials[property]) delete credentials[property]
+    }
+    return credentials;
+  }
+
   private onSubmit($event){
     $event.preventDefault();
+    let credentials = this.cleanCredentials(this.credentials);
+    this.user.update(credentials).then(data => {
+      console.log(data);
+    })
   }
 
   private handleLocationSettings($event){
