@@ -16,7 +16,7 @@ import { GuidesProvider } from '../../providers/guides';
 export class Nearby {
 
   public selectedCity: any = null;
-  public coords:       any = null;
+  public currentPos:   any = null;
   public guides:       any = null;
   constructor(
     public modalCtlr: ModalController,
@@ -33,7 +33,7 @@ export class Nearby {
   }
 
   handleCoords(coords: any){
-    this.coords = coords;
+    this.currentPos = coords;
     this.places.getCityFromLatLng(coords)
     .then(city => {
       this.selectedCity = city;
@@ -42,7 +42,6 @@ export class Nearby {
   }
 
   getRelevantGuides(q: string = null){
-    console.log('grg')
     this.guidesProvider.getGuides({
       q: q
     }).then(results => {
@@ -54,7 +53,7 @@ export class Nearby {
     let modal = this.modalCtlr.create(City);
     modal.onDidDismiss(city => {
       this.selectedCity = city.name;
-      this.coords = city.coords;
+      this.currentPos   = city.coords;
     });
     modal.present();
   }

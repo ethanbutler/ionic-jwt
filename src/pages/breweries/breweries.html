@@ -11,14 +11,14 @@
   <div [ngSwitch]="show" padding>
     <div *ngSwitchCase="'nearby'">
       <p *ngIf="!currentPos">Loading breweries</p>
-      <brewery-list-full *ngIf="currentPos" [args]="{count:12, lat: currentPos.lat, lon: currentPos.lon}"></brewery-list-full>
+      <brewery-list-full *ngIf="currentPos" [args]="{orderby: 'nearby', lat: currentPos.lat, lng: currentPos.lng}"></brewery-list-full>
     </div>
     <div *ngSwitchCase="'all'">
-      <brewery-list-full [args]="{count:-1}"></brewery-list-full>
+      <brewery-list-full [args]="{orderby: 'name'}"></brewery-list-full>
     </div>
     <div *ngSwitchCase="'saved'">
       <p *ngIf="!userId">Loading breweries</p>
-      <brewery-list-full *ngIf="userId" [args]="{count:12, userId: userId}"></brewery-list-full>
+      <brewery-list-full *ngIf="userId" [args]="{userId: userId}"></brewery-list-full>
     </div>
   </div>
 </ion-content>

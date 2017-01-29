@@ -2,13 +2,13 @@
   <app-header></app-header>
 </ion-header>
 <ion-content>
-  <div *ngIf="coords">
+  <div *ngIf="currentPos">
     <div class="nearby-selector" (click)="openCitySelector()">
       <ion-icon *ngIf="selectedCity" name="pin"></ion-icon>
       {{selectedCity}}
     </div>
     <div class="divider">
-      <brewery-list [args]="{count:3, lat: coords.lat, lng: coords.lon}"></brewery-list>
+      <brewery-list [args]="{count:3, orderby: 'nearest', lat: currentPos.lat, lng: currentPos.lng}"></brewery-list>
     </div>
     <div *ngIf="guides" class="divider">
       <guide *ngFor="let guide of guides" [data]="guide"></guide>
@@ -17,7 +17,7 @@
       <gopc-ad></gopc-ad>
     </div>
   </div>
-  <div *ngIf="!coords" class="center" padding>
+  <div *ngIf="!currentPos" class="center" padding>
     Calculating Location
   </div>
 </ion-content>

@@ -5,7 +5,7 @@
   <div class="divider">
     <h2 class="center">Nearby Locations</h2>
     <div *ngIf="currentPos">
-      <brewery-list *ngIf="currentPos" [args]="{count:3, lat: currentPos.lat, lon: currentPos.lon}"></brewery-list>
+      <brewery-list *ngIf="currentPos" [args]="{count:3, orderby:'nearest', lat: currentPos.lat, lng: currentPos.lng}"></brewery-list>
       <a block class="center link link--large" (click)="goToNearby($event)">See More</a>
     </div>
     <p *ngIf="!currentPos" class="center">Loading Nearby Breweries</p>

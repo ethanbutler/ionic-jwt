@@ -14,19 +14,13 @@ import { Distance } from '../../providers/distance';
 })
 export class Home {
 
-  guides: Array<any> = [
-    { id: 4, name: 'Asheville Brewery Guide', img: 'assets/img/asheville.jpg' },
-    { id: 5, name: 'Raleigh Brewery Guide', img: 'assets/img/raleigh.jpg' },
-    { id: 6, name: 'Greensboro Brewery Guide', img: 'assets/img/greensboro.jpg' }
-  ];
-
   currentPos: Object = null;
 
   constructor(public navCtrl: NavController, public distance: Distance) {
     distance.getCoords()
-      .then(data => {
-        this.currentPos = data;
-      });
+    .then(data => {
+      this.currentPos = data;
+    });
   }
 
   goToGuides(){
