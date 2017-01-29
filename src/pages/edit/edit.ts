@@ -16,7 +16,7 @@ export class Edit {
   email:                string = null;
   passwordOriginal:     string = null;
   passwordConfirmation: string = null;
-  credentials: any = {
+  credentials:          any = {
     name: null,
     username: null,
     email: null,
@@ -24,12 +24,10 @@ export class Edit {
     latitude: null,
     longitude: null
   };
-  password: any = {
-    original: null,
-    confirmation: null
-  };
-  err: string = null;
-  doPasswordsMatch: Boolean = true;
+  password:             any = { original: null, confirmation: null };
+  success:              Boolean = false;
+  err:                  any = null;
+  doPasswordsMatch:     Boolean = true;
   constructor(
     public navCtrl:     NavController,
     public navParams:   NavParams,
@@ -78,7 +76,7 @@ export class Edit {
     $event.preventDefault();
     let credentials = this.cleanCredentials(this.credentials);
     this.user.update(credentials).then(data => {
-      console.log(data);
+      this.success = true;
     })
   }
 

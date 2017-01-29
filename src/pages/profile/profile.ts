@@ -24,9 +24,10 @@ export class Profile {
     public navCtrl: NavController,
     public navParams: NavParams,
     private user: User
-  ) {
-    this.user.getUserInfo()
-    .then(data => {
+  ) {}
+
+  ionViewWillEnter(){
+    this.user.getUserInfo().then(data => {
       this.userInfo.name     = data['name'];
       this.userInfo.username = data['username'];
       this.userInfo.avatar   = data['avatarSrcUrl'];

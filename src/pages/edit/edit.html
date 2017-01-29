@@ -18,6 +18,8 @@
   <div class="divider">
     <avatar-upload></avatar-upload>
   </div>
+  <p *ngIf="success">Information updated!</p>
+  <p *ngIf="err">{{err}}</p>
   <ion-list>
     <ion-item>
       <ion-label floating>Name</ion-label>
