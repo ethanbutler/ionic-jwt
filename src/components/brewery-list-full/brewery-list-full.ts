@@ -15,16 +15,24 @@ import { Distance } from '../../providers/distance';
 export class BreweryListFull{
 
     @Input() args: Object;
+    @Input() preData: any;
     public data: any = null;
     constructor(public navCtrl: NavController, private breweries: BreweriesProvider, private distance: Distance ) {}
 
-    ngOnInit(){
-      this.breweries.getBreweries(this.args)
+    handleData(){
+      if(this.preData){
+        this.data = this.preData;
+      } else {
+        this.breweries.getBreweries(this.args)
         .then(data => {
-          console.log(data)
           this.data = data['breweries'];
         });
+      }
     }
+
+    ngOnInit(){ this.handleData() }
+
+    ngOnChanges(){ this.handleData() }
 
     goToBrewery(id){
       for( let brewery of this.data ){

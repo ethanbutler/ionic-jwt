@@ -7,7 +7,7 @@
   <ion-list>
     <ion-input type="text" placeholder="Enter Location" [ngModel]="q" (ngModelChange)="handleChange($event)"></ion-input>
   </ion-list>
-  <ion-list>
+  <ion-list *ngIf="cities">
     <ion-item *ngFor="let city of cities" (click)="handleExit(city)">{{city.name}}</ion-item>
   </ion-list>
 </ion-content>

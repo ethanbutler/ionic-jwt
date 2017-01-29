@@ -4,5 +4,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-
+  <ion-list>
+    <ion-input type="text" placeholder="Search" [ngModel]="q" (ngModelChange)="onChange($event)"></ion-input>
+  </ion-list>
+  <brewery-list-full *ngIf="results" [preData]="results"></brewery-list-full>
+  <p *ngIf="q && !results.length">No results found for "{{q}}".</p>
 </ion-content>

@@ -73,7 +73,7 @@ describe('Breweries Provider', () => {
     });
   });
 
-  xit('should get breweries by nearest', () => {
+  it('should get breweries by nearest', () => {
     const sortByDistance = (a, b) => {
       const dummyCoords = {
         lat: 35.9940,
@@ -97,6 +97,21 @@ describe('Breweries Provider', () => {
       let unsorted = results.breweries.slice();
       let sorted   = results.breweries.sort(sortByDistance);
       expect(unsorted).toEqual(sorted);
+    });
+  });
+
+  it('should get breweries that match a term', () => {
+    let q = 'beer';
+    return breweriesProvider.getBreweries({
+      q: q
+    }).then(results => {
+      for(let result of results.breweries){
+        let name = result.name;
+        let desc = result.description;
+        let addr = result.breweryAddress;
+        let doesContainTerm = name.includes(q) || desc.includes(q) || addr.includes(q);
+        expect(doesContainTerm).toBe(true);
+      }
     });
   });
 
