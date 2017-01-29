@@ -15,15 +15,21 @@ import { User } from '../../providers/user';
   templateUrl: 'profile.html'
 })
 export class Profile {
-  public dummyUser: any = {
-    name: "Kyle Lambert",
-    username: "beerdude2012",
-    avatar: "assets/img/avatar.jpg"
-  }
-  constructor(public navCtrl: NavController, public navParams: NavParams, private user: User) {
+  public userInfo: any = {
+    name: null,
+    username: null,
+    avatar: null
+  };
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private user: User
+  ) {
     this.user.getUserInfo()
     .then(data => {
-      console.log(data);
+      this.userInfo.name     = data['name'];
+      this.userInfo.username = data['username'];
+      this.userInfo.avatar   = data['avatarSrcUrl'];
     })
   }
 

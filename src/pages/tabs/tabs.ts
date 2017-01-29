@@ -26,7 +26,7 @@ export class Tabs {
 
   ionViewDidEnter(){
     let profileTab = document.querySelector('#tab-t0-4');
-    this.user.getUserInformation('avatar').then(avatarSrc => {
+    this.user.getUserInfo(null, 'avatarSrcUrl').then(avatarSrc => {
       profileTab.innerHTML = `<span class="icon-avatar"><img src="${avatarSrc}" /></span>`;
     })
   }

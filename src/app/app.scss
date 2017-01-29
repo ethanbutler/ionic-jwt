@@ -121,17 +121,23 @@ gopc-ad {
 }
 
 .icon-avatar {
-  height: 30px;
-  border-radius: 100%;
+  position: relative;
   overflow: hidden;
-  &[aria-selected="true"]{
-    border: 1px solid map-get($colors,dark);
-  }
+  border-radius: 100%;
   img {
-    height: 100%;
-    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
   }
 }
+
+ion-tabs .icon-avatar {
+  width: 30px;
+  height: 30px;
+}
+
 
 .imgWrapper {
   height: 100px;
