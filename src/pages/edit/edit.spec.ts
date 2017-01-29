@@ -59,13 +59,33 @@ describe('Edit Page', () => {
     let username = 'ethombutler';
 
     comp.onChange(name, 'name');
-    expect(comp.credentials.name).toBe(name);
     comp.onChange(email, 'email');
-    expect(comp.credentials.email).toBe(email);
     comp.onChange(username, 'username');
-    expect(comp.credentials.username).toBe(username);
     comp.onChange('xxx', 'nonProperty');
+
+    expect(comp.credentials.name).toBe(name);
+    expect(comp.credentials.email).toBe(email);
+    expect(comp.credentials.username).toBe(username);
     expect(typeof comp.credentials.nonProperty).toBe('undefined');
+  });
+
+  it('should check that passwords match', () => {
+    let a = 'password';
+    let b = 'NOTPASSWORD';
+
+    comp.onPasswordChange(a, 'original');
+    comp.onPasswordChange(b, 'confirmation');
+
+    expect(comp.password.original).toBe(a);
+    expect(comp.password.confirmation).toBe(b);
+    expect(comp.doPasswordsMatch).toBe(false);
+
+    comp.onPasswordChange(a, 'confirmation');
+
+    expect(comp.doPasswordsMatch).toBe(true);
+    expect(comp.credentials.password).toBe(a);
+    expect(comp.onPasswordChange(a, b)).toBe(null);
+
   });
 
 })

@@ -34,6 +34,7 @@
       <ion-label floating>Email</ion-label>
       <ion-input type="email" value="{{credentials.email}}"></ion-input>
     </ion-item>
+    <p *ngIf="!doPasswordsMatch">Passwords do not match.</p>
     <ion-item>
       <ion-label floating>Change Password</ion-label>
       <ion-input type="password"></ion-input>
