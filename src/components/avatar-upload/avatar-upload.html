@@ -1,9 +1,7 @@
-<div *ngIf="lastImage">
+<div *ngIf="lastImage" class="icon-avatar" (click)="presentActionSheet()">
   <img src="{{pathForImage(lastImage)}}" />
 </div>
-<button ion-button (click)="presentActionSheet()">
-  Select Image
-</button>
-<button ion-button (click)="uploadImage()" [disabled]="!lastImage">
-  Upload
-</button>
+<div class="avatar-options">
+  <a (click)="presentActionSheet()">Update Avatar</a>
+  <a *ngIf="hasNewImage" (click)="uploadImage()">Use New Avatar</a>
+</div>

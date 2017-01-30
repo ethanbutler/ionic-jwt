@@ -5,6 +5,9 @@ import { NavController, ActionSheetController, ToastController, Platform, Loadin
 import { Camera, File as _File, FilePath } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
+//providers
+import { User } from '../../providers/user';
+
 declare var cordova: any;
 
 @Component({
@@ -14,19 +17,25 @@ declare var cordova: any;
 export class AvatarUpload {
 
   contentHeaders: Headers = new Headers({'content-type': 'multipart/form-data'});
-  endpoint:       string = 'http://dev.beerncapp.com:3000/api/v1/users/avatar';
+  endpoint:       string = 'http://dev.beerncapp.com:3000/api/v1/users/avatar/';
   //endpoint:       string = 'http://192.168.1.140:3000/test';
   error:          string = null;
   lastImage:      string = null;
   loading:        any = null;
+  hasNewImage:    Boolean = false;
   constructor(
     public authHttp: AuthHttp,
     public navCtrl: NavController,
     public actionSheetCtrl: ActionSheetController,
     public toastCtrl: ToastController,
     public platform: Platform,
-    public loadingCtrl: LoadingController
-  ){}
+    public loadingCtrl: LoadingController,
+    public user: User
+  ){
+    this.user.getUserInfo(null, 'avatarSrcUrl').then(avatarSrc => {
+      this.lastImage = avatarSrc as string;
+    });
+  }
 
   // https://devdactic.com/ionic-2-images/
   public presentActionSheet(){
@@ -87,8 +96,11 @@ export class AvatarUpload {
   }
 
   private copyFileToLocalDir(namePath, currentName, newFileName){
+    //temp
+    if(typeof cordova == 'undefined') return;
     _File.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.lastImage = newFileName;
+      this.hasNewImage = true;
     }, (err) => {
       this.presentToast('Error while storing file.');
     });
@@ -107,6 +119,8 @@ export class AvatarUpload {
     if(img === null){
       return '';
     } else {
+      //temp
+      if(typeof cordova == 'undefined') return this.lastImage;
       return cordova.file.dataDirectory + img;
     }
   }
@@ -136,14 +150,15 @@ export class AvatarUpload {
       //console.log(blob);
       let body = new FormData();
       body.append('avatar', blob);
-      this.authHttp.put(this.endpoint, body)
+      this.authHttp.post(this.endpoint, body)
       .map(res => {
         //console.log(res);
         return res => res.json();
       })
       .subscribe(data => {
         this.loading.dismissAll();
-        //console.log(data);
+        this.presentToast('Avatar changed!');
+        console.log(data);
       }, err => {
         console.log(err);
       });

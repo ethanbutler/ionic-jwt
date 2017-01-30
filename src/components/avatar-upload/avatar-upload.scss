@@ -1,3 +1,22 @@
 avatar-upload {
-
+  display: block;
+  margin: 0 0 29px;
+  .icon-avatar,
+  .avatar-options {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .icon-avatar {
+    width: 60px;
+    height: 60px;
+    margin: 0 10px 0 0;
+  }
+  .avatar-options {
+    a {
+      display: block;
+      margin: 0 0 5px;
+      text-transform: uppercase;
+      text-decoration: underline;
+    }
+  }
 }
