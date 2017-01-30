@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 //pages
@@ -16,6 +16,7 @@ export class BreweryListFull{
 
     @Input() args: Object;
     @Input() preData: any;
+    @Output() loaded: any = new EventEmitter();
     public data: any = null;
     constructor(public navCtrl: NavController, private breweries: BreweriesProvider, private distance: Distance ) {}
 
@@ -26,6 +27,7 @@ export class BreweryListFull{
         this.breweries.getBreweries(this.args)
         .then(data => {
           this.data = data['breweries'];
+          this.loaded.next();
         });
       }
     }

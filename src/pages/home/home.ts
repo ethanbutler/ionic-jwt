@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 
 //pages
 import { Guides  } from '../guides/guides';
@@ -15,12 +15,27 @@ import { Distance } from '../../providers/distance';
 export class Home {
 
   currentPos: Object = null;
-
-  constructor(public navCtrl: NavController, public distance: Distance) {
+  loader:     any = this.loadingCtrl.create({
+    content: 'Loading Nearby Breweries'
+  });
+  constructor(
+    public navCtrl: NavController,
+    public distance: Distance,
+    public loadingCtrl: LoadingController
+  ) {
     distance.getCoords()
     .then(data => {
       this.currentPos = data;
     });
+  }
+
+  ngOnInit(){
+    this.loader.present();
+  }
+
+  dismissLoader(){
+    //TODO: clean this up
+    this.loader.dismiss().catch(() => {});
   }
 
   goToGuides(){

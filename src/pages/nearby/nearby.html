@@ -8,7 +8,7 @@
       {{selectedCity}}
     </div>
     <div class="divider">
-      <brewery-list [args]="{count:3, orderby: 'nearest', lat: currentPos.lat, lng: currentPos.lng}"></brewery-list>
+      <brewery-list [args]="{count:3, orderby: 'nearest', lat: currentPos.lat, lng: currentPos.lng}" (loaded)="dismissLoader()"></brewery-list>
     </div>
     <div *ngIf="guides" class="divider">
       <guide *ngFor="let guide of guides" [data]="guide"></guide>

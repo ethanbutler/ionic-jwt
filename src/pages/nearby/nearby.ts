@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { ModalController, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 //pages
 import { City } from '../city/city';
@@ -18,18 +18,31 @@ export class Nearby {
   public selectedCity: any = null;
   public currentPos:   any = null;
   public guides:       any = null;
+  loader:              any = this.loadingCtrl.create({
+    content: 'Loading Nearby Breweries'
+  });
   constructor(
     public modalCtlr: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
+    public loadingCtrl: LoadingController,
     private distance: Distance,
     private guidesProvider: GuidesProvider,
-    private places: GooglePlaces) {}
+    private places: GooglePlaces
+  ) {}
 
   ionViewDidLoad(){
     this.distance.getCoords().then(coords => {
       this.handleCoords(coords)
     })
+  }
+
+  ngOnInit(){
+    this.loader.present();
+  }
+
+  dismissLoader(){
+    this.loader.dismiss().catch(() => {});
   }
 
   handleCoords(coords: any){
