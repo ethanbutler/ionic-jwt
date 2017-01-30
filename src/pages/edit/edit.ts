@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 
 //providers
 import { User } from '../../providers/user';
@@ -32,7 +32,8 @@ export class Edit {
     public navCtrl:     NavController,
     public navParams:   NavParams,
     public user:        User,
-    public distance:    Distance
+    public distance:    Distance,
+    public toastCtrl:   ToastController
   ) {
     this.user.getUserInfo().then(info => {
       this.credentials.name      = info['name'] || 'Add Name';
@@ -43,6 +44,15 @@ export class Edit {
       this.credentials.latitude  = coords['lat'];
       this.credentials.longitude = coords['lng'];
     });
+  }
+
+  private presentToast(text){
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
   }
 
   private onChange(event: string, property: string){
@@ -76,7 +86,7 @@ export class Edit {
     $event.preventDefault();
     let credentials = this.cleanCredentials(this.credentials);
     this.user.update(credentials).then(data => {
-      this.success = true;
+      this.presentToast('Information saved. Cheers!');
     })
   }
 

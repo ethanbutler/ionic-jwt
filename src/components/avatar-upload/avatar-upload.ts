@@ -33,6 +33,7 @@ export class AvatarUpload {
     public user: User
   ){
     this.user.getUserInfo(null, 'avatarSrcUrl').then(avatarSrc => {
+      console.log(avatarSrc);
       this.lastImage = avatarSrc as string;
     });
   }
