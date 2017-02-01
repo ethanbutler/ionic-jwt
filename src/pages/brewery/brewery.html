@@ -17,23 +17,17 @@
             <strong>Get directions</strong>
             <small>Get some beer</small>
           </div>
-        </ion-col>
-        <ion-col width-50>
-          <div class="brewery-info" (click)="openWebsite(data.url)">
+          <div *ngIf="data.url" class="brewery-info" (click)="openWebsite(data.url)">
             <strong>Visit website</strong>
             <small>{{data.url || 'N/A' | removehttp}}</small>
           </div>
         </ion-col>
-      </ion-row>
-      <ion-row>
         <ion-col width-50>
-          <div class="brewery-info"><!--TODO: figure out how to dial natively-->
+          <div *ngIf="data.tel" class="brewery-info"><!--TODO: figure out how to dial natively-->
             <strong>Call</strong>
             <small>{{data.tel || 'N/A'}}</small>
           </div>
-        </ion-col>
-        <ion-col width-50>
-          <div class="brewery-info" (click)="openHours()">
+          <div *ngIf="data.breweryHours !== null" class="brewery-info" (click)="openHours()">
             <strong>{{'Open Now' | today}}</strong>
             <small *ngIf="data.breweryHours">{{data.breweryHours | todayshours}}</small>
           </div>
