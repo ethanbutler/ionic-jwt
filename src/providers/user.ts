@@ -32,6 +32,7 @@ export class User {
   public getUserInfo(id?: number, type?: string){
     return new Promise(resolve => {
       this.getToken().then(token => {
+        if(!token) return;
         let _token = this.jwtHelper.decodeToken(token);
         let userId = id || _token.id;
         this.authHttp.get(this.endpoint + userId, {
