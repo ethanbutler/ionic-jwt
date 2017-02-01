@@ -4,8 +4,8 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-scroll class="img-scrub" scrollX="true" style="width:100vw;height:150px;">
-    <img *ngFor="let img of dummyData.imgs" src="{{img}}" />
+  <ion-scroll *ngIf="data.gallery" class="img-scrub" scrollX="true" style="width:100vw;height:150px;">
+    <img *ngFor="let img of data.gallery" src="{{img.src}}" />
   </ion-scroll>
   <div padding>
     <div [innerHTML]="data.description"></div>
