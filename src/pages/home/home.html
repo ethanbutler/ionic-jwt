@@ -10,7 +10,7 @@
     </div>
     <p *ngIf="!currentPos" class="center">Loading Nearby Breweries</p>
   </div>
-  <div class="divider" *ngIf="guides">
+  <div class="divider">
     <h2 class="center">Brewery Guides</h2>
     <guide-list [args]="{count:3}"></guide-list>
     <a block class="center link link--large" (click)="goToGuides($event)">Browse All Guides</a>
