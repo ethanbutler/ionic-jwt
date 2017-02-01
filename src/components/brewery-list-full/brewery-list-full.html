@@ -1,9 +1,9 @@
 <div *ngIf="breweries">
-  <div *ngFor="let brewery of data" (click)="goToBrewery(brewery.id)" padding>
-    <img src="{{brewery.img}}" />
-    <h3>{{brewery.name | cleanentities}}</h3>
-    <div>{{brewery.breweryAddress}}</div>
-    <div>{{distance.getDistance(brewery.latitude, brewery.longitude)}} miles</div>
-    <div *ngIf="brewery.breweryHours">{{Today | today}}: {{brewery.breweryHours | todayshours}}</div>
+  <div class="breweryCard" *ngFor="let brewery of data" (click)="goToBrewery(brewery.id)" padding>
+    <img class="breweryCard-img" src="{{brewery.img}}" />
+    <h3 class="breweryCard-heading">{{brewery.name | cleanentities}}</h3>
+    <div class="breweryCard-addr">{{brewery.breweryAddress}}</div>
+    <div class="breweryCard-dist">{{distance.getDistance(brewery.latitude, brewery.longitude)}} miles</div>
+    <div class="breweryCard-hours" *ngIf="brewery.breweryHours">{{Today | today}}: {{brewery.breweryHours | todayshours}}</div>
   </div>
 </div>
