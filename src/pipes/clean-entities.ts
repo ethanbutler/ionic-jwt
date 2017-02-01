@@ -6,7 +6,8 @@ import { Injectable, Pipe } from '@angular/core';
 @Injectable()
 export class CleanEntities {
   transform(value, args) {
-    value = value.replace('&#038;', '&');
+    value = value.replace('&#038;', '&')
+      .replace('&#8217;', '\'');
     return value;
   }
 }
