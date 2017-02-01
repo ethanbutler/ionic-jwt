@@ -40,6 +40,7 @@ import { BreweryListFull } from '../components/brewery-list-full/brewery-list-fu
 import { CleanEntities } from '../pipes/clean-entities';
 import { Removehttp }    from '../pipes/removehttp';
 import { SafeHtmlPipe }  from '../pipes/safehtml';
+import { Today }         from '../pipes/today';
 import { TodaysHours }   from '../pipes/todays-hours';
 
 //providers
@@ -91,6 +92,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions){
     CleanEntities,
     Removehttp,
     SafeHtmlPipe,
+    Today,
     TodaysHours,
     GuideComponent,
     GuideList,
