@@ -52,6 +52,7 @@ export class Profile {
 
   logOut(){
     this.user.logout(() => {
+      window.dispatchEvent(new Event('LOGINCHANGE'));
       this.navCtrl.push(Splash);
     });
   }

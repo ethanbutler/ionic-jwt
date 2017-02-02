@@ -46,6 +46,7 @@ export class SignIn {
       data => this.user.login(data, (token) => {
         this.error = null;
         this.navCtrl.push(Tabs);
+        window.dispatchEvent(new Event('LOGINCHANGE'));
       }),
       err => {
         console.log(err);
