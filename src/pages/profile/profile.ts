@@ -42,10 +42,9 @@ export class Profile {
     this.navCtrl.push(Terms);
   }
 
-  //TODO: create privacy page
-  goToPrivacy(){
-    this.navCtrl.push(Terms);
-  }
+  // goToPrivacy(){
+  //   this.navCtrl.push(Terms);
+  // }
 
   goToFeedback(){
     this.navCtrl.push(Feedback);
